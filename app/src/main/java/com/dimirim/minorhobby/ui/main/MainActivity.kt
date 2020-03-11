@@ -1,7 +1,8 @@
-package com.dimirim.minorhobby
+package com.dimirim.minorhobby.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dimirim.minorhobby.R
 
 class MainActivity : AppCompatActivity() {
 
