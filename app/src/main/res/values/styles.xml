@@ -5,4 +5,25 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    //텍스트 스타일 값
+    <style name="TextStyle3">
+        <item name="android:textSize">23sp</item>
+        <item name="android:lineSpacingExtra">-17sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">7.5sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Nav">
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">7.5sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextStyle2">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">7.8sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
