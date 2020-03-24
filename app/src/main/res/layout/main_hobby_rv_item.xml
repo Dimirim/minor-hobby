@@ -6,25 +6,24 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/hobbyPhoto"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
+        android:layout_width="83.5dp"
+        android:layout_height="83.5dp"
         android:layout_marginEnd="15dp"
         android:backgroundTint="#269d3cc8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/hobbyPhotoGradient"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
+        android:layout_width="83.5dp"
+        android:layout_height="83.5dp"
         android:background="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="@+id/hobbyPhoto"
         app:layout_constraintEnd_toEndOf="@+id/hobbyPhoto"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/hobbyPhoto"
-        app:layout_constraintTop_toTopOf="@+id/hobbyPhoto"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/hobbyPhoto" />
 
     <TextView
         android:id="@+id/hobbyName"
@@ -33,6 +32,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:ellipsize="end"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="6sp"
         android:maxLines="1"
         android:text="hobbyName"
@@ -40,8 +41,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/hobbyPhoto"
         app:layout_constraintStart_toStartOf="@+id/hobbyPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/hobbyPhoto"
-        app:lineHeight="18sp" />
+        app:layout_constraintTop_toBottomOf="@+id/hobbyPhoto" />
 
     <TextView
         android:id="@+id/hobbyCount"
@@ -49,11 +49,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
+        android:fontFamily="@font/notosanscjkkrregular"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="4.5sp"
-        android:shadowColor="#999999"
         android:text="hobbyMemberCount"
+        android:textColor="#999999"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@id/hobbyName"
+        app:layout_constraintStart_toStartOf="@+id/hobbyName"
         app:layout_constraintTop_toBottomOf="@+id/hobbyName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

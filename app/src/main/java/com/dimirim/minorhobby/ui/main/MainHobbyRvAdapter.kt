@@ -47,7 +47,7 @@ class MainRvAdapter(
             }
             hobbyName?.text = hobby.name
             hobbyMemberCount?.text =
-                "${NumberFormat.getIntegerInstance().format(hobby.memberCount)}명"
+                "${NumberFormat.getIntegerInstance().format(hobby.memberCount)} 명"
 
             itemView.setOnClickListener { itemClick(hobby) }
         }

@@ -17,26 +17,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:fontFamily="@font/notosanscjkkrbold"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="7.5sp"
             android:text="마이너"
             android:textColor="#9d3cc8"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lineHeight="23.5sp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="님의 취미"
+            android:fontFamily="@font/notosanscjkkrbold"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="7.5sp"
+            android:text=" 님의 취미"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/userName"
             app:layout_constraintStart_toEndOf="@+id/userName"
             app:layout_constraintTop_toTopOf="@+id/userName"
-            app:layout_constraintVertical_bias="0.0"
-            app:lineHeight="23.5sp" />
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
