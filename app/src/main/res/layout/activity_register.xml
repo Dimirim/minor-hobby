@@ -5,4 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.register.RegisterActivity">
 
+    <ImageButton
+        android:layout_width="21.8dp"
+        android:layout_height="16dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
