@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.content.res.ResourcesCompat;
 
@@ -38,7 +36,7 @@ public class HobbyPopupWindow {
         this.context = context;
     }
 
-    public void callFunction(final TextView searchView){
+    public void callFunction(final TextView searchView) {
 
         resetPopupWindow();
 
@@ -73,44 +71,42 @@ public class HobbyPopupWindow {
         searchOption.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     isSearchAll = true;
-                }
-                else{
+                } else {
                     isSearchAll = false;
                 }
             }
         });
 
         ChipGroup mChipGroup = (ChipGroup) filterPopupWindow.findViewById(R.id.chipGroup);
-        for(int i = 0; i < tagList.size(); i++){
+        for (int i = 0; i < tagList.size(); i++) {
             final Chip chip = new Chip(context);
 
             //다중 선택 설정
             chip.setChipDrawable(ChipDrawable.createFromAttributes(context, null, 0, R.style.Widget_MaterialComponents_Chip_Filter));
             //체그 아이콘 없애기
             chip.setCheckedIconVisible(false);
-            chip.setText("#"+tagList.get(i));
+            chip.setText("#" + tagList.get(i));
             isTagChecked.add(false);
             chip.setTag(i);
             chip.setRippleColor(null);
-            chip.setChipStrokeWidth((float)(0.5*dm.density));
+            chip.setChipStrokeWidth((float) (0.5 * dm.density));
             chip.setTypeface(ResourcesCompat.getFont(context, R.font.notosanscjkkrmedium));
             chip.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#999999")));
             chip.setChipBackgroundColor(ColorStateList.valueOf(Color.parseColor("#ffffff")));
             chip.setTextColor(ColorStateList.valueOf(Color.parseColor("#999999")));
-            chip.setOnClickListener(new Chip.OnClickListener(){
+            chip.setOnClickListener(new Chip.OnClickListener() {
                 @Override
-                public void onClick(View v){
-                    if(!isTagChecked.get((int)(v.getTag()))){
-                        isTagChecked.set((int)(v.getTag()), true);
+                public void onClick(View v) {
+                    if (!isTagChecked.get((int) (v.getTag()))) {
+                        isTagChecked.set((int) (v.getTag()), true);
                         chip.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#9d3cc8")));
                         chip.setTextColor(ColorStateList.valueOf(Color.parseColor("#9d3cc8")));
-                    }
-                    else{
+                    } else {
                         chip.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#999999")));
                         chip.setTextColor(ColorStateList.valueOf(Color.parseColor("#999999")));
-                        isTagChecked.set((int)(v.getTag()), false);
+                        isTagChecked.set((int) (v.getTag()), false);
                     }
                 }
             });
@@ -118,9 +114,9 @@ public class HobbyPopupWindow {
         }
     }
 
-    public String getSearchbarText(){
-        for(int i = 0; i < tagList.size(); i++){
-            if(isTagChecked.get(i)) {
+    public String getSearchbarText() {
+        for (int i = 0; i < tagList.size(); i++) {
+            if (isTagChecked.get(i)) {
                 searchText = searchText.concat("#");
                 searchText = searchText.concat(tagList.get(i));
                 searchText = searchText.concat(", ");
@@ -128,13 +124,13 @@ public class HobbyPopupWindow {
             }
         }
 
-        if(searchText.length() > 0){
-            searchText = searchText.substring(0, searchText.length()-2);
+        if (searchText.length() > 0) {
+            searchText = searchText.substring(0, searchText.length() - 2);
         }
         return searchText;
     }
 
-    private void resetPopupWindow(){
+    private void resetPopupWindow() {
         searchText = "";
         returnTagList.clear();
         isTagChecked.clear();
