@@ -1,4 +1,4 @@
-package com.dimirim.minorhobby.ui.hobby_detail;
+package com.dimirim.minorhobby.ui.hobby;
 
 import android.app.Dialog;
 import android.content.Context;

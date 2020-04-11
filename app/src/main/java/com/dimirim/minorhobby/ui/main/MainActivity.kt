@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.dimirim.minorhobby.R
+import com.dimirim.minorhobby.ui.hobby.HobbyActivity
 import com.dimirim.minorhobby.ui.hobby_detail.HobbyDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mAdapter = MainRvAdapter(this, hobbyList) { hobby ->
-            val intent = Intent(this, HobbyDetailActivity::class.java)
+            val intent = Intent(this, HobbyActivity::class.java)
             intent.putExtra("hobbyName", "${hobby.name}")
             startActivity(intent)
         }

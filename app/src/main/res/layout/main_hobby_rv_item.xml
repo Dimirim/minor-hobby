@@ -19,7 +19,7 @@
         android:id="@+id/hobbyPhotoGradient"
         android:layout_width="83.5dp"
         android:layout_height="83.5dp"
-        android:background="@drawable/circle"
+        android:background="@drawable/purple_radial_gradient"
         app:layout_constraintBottom_toBottomOf="@+id/hobbyPhoto"
         app:layout_constraintEnd_toEndOf="@+id/hobbyPhoto"
         app:layout_constraintStart_toStartOf="@+id/hobbyPhoto"
