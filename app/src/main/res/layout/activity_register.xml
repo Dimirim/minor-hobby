@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.register.RegisterActivity">
+
 
     <ImageButton
         android:layout_width="21.8dp"
@@ -12,6 +15,101 @@
         android:scaleType="centerCrop"
         android:src="@drawable/back"
 
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15.6dp"/>
+
+    <TextView
+        android:id="@+id/text1"
+
+        style="@style/TextStyle4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="60dp"
+
+        android:bufferType="spannable"
+        android:text="프로필을\n설정해주세요!" />
+
+    <RelativeLayout
+        android:id="@+id/touchlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user"
+            android:layout_width="129dp"
+            android:layout_height="129dp"
+            android:layout_centerInParent="true"
+
+            android:elevation="3dp"
+            android:src="@drawable/user" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="129dp"
+        android:layout_height="129dp"
+        android:layout_centerInParent="true">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="27.1dp"
+            android:layout_height="27.1dp"
+
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="3.7dp"
+            android:layout_marginBottom="8.1dp"
+            android:background="@drawable/circle_button"
+
+            android:elevation="1dp"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/purply"
+            android:textSize="20dp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/nextbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="41.5dp"
+        android:layout_marginRight="29.5dp"
+        android:background="@drawable/round_button"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:bufferType="spannable"
+        android:lineSpacingExtra="6.5sp"
+        android:text="건너뛰기"
+        android:textColor="@color/purply"
+        android:textSize="13.5sp"
+        android:layout_alignLeft="@+id/nextbutton"
+        android:layout_alignBaseline="@+id/nextbutton"
+        android:layout_marginLeft="30.8dp"/>
+    <ImageView
+        android:layout_width="21.8dp"
+        android:layout_height="16dp"
+        android:src="@drawable/next"
+        android:layout_toRightOf="@+id/text2"
+        android:layout_alignBottom="@+id/text2"
+        android:layout_marginLeft="12.8dp"
+        />
+
+
+</RelativeLayout>
