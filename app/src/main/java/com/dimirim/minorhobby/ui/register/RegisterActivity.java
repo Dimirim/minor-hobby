@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.text.Spanned;
@@ -29,7 +30,7 @@ import java.io.File;
 import static android.graphics.Typeface.BOLD;
 
 
-public abstract class RegisterActivity extends AppCompatActivity implements  View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements  View.OnClickListener{
     private int id_view;
 
     private static final int PICK_FROM_CAMERA = 0; //사진촬영 ->이미지 처리
@@ -52,7 +53,7 @@ public abstract class RegisterActivity extends AppCompatActivity implements  Vie
         sp.setSpan(new StyleSpan(Typeface.BOLD), 0, 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         iv_UserPhoto = (ImageView)this.findViewById(R.id.user);
-        RelativeLayout rl = (RelativeLayout)findViewById((R.id.touchlayout));
+        LinearLayout rl = (LinearLayout)findViewById((R.id.touchlayout));
         rl.setOnClickListener(this);
 
 

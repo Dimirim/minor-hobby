@@ -32,7 +32,6 @@
         android:text="프로필을\n설정해주세요!" />
 
     <RelativeLayout
-        android:id="@+id/touchlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true">
@@ -49,6 +48,7 @@
 
 
     <LinearLayout
+        android:id="@+id/touchlayout"
         android:layout_width="129dp"
         android:layout_height="129dp"
         android:layout_centerInParent="true">
