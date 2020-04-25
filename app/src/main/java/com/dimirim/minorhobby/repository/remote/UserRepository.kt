@@ -25,4 +25,8 @@ object UserRepository {
         users.document(this.id).update(field, value)
         return getUserById(this.id)!!
     }
+
+    suspend fun isNameDuplicated(name: String): Boolean {
+        return !users.whereEqualTo("name", name).get().await().isEmpty
+    }
 }
