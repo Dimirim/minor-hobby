@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.main.MainActivity">
 
@@ -18,9 +19,9 @@
             android:src="@drawable/typo_purple" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:id="@+id/profileImageView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
@@ -32,10 +33,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/nameTextView"
             style="@style/SmallBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,6 +57,16 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hobbyRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_round_recommend" />
+
     <TextView
         style="@style/SmallBoldText"
         android:layout_width="wrap_content"
@@ -65,5 +77,14 @@
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
         tools:text="게시물" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommend_hobby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_post_recommend" />
 
 </LinearLayout>
