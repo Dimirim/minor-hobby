@@ -39,4 +39,14 @@ object PostRepository {
     suspend fun getAllPosts(): List<Post> {
         return posts.get().await().toObjects(Post::class.java)
     }
+
+    suspend fun Post.addLike() {
+        posts.document(this.id).update("likes", this.likes + 1).await()
+        this.likes++
+    }
+
+    suspend fun Post.addView() {
+        posts.document(this.id).update("views", this.likes + 1).await()
+        this.views++
+    }
 }
