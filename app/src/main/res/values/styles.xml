@@ -4,5 +4,49 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/noto_bold</item>
     </style>
+
+    <style name="BigBoldText">
+        <item name="android:textSize">23sp</item>
+        <item name="android:lineSpacingExtra">18.8sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/noto_bold</item>
+    </style>
+
+    <style name="BigMediumText">
+        <item name="android:textSize">23sp</item>
+        <item name="android:lineSpacingExtra">-17sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/noto_medium</item>
+    </style>
+
+    <style name="BigRegularText">
+        <item name="android:textSize">23sp</item>
+        <item name="android:lineSpacingExtra">18.8sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/noto_regular</item>
+    </style>
+
+    <style name="SmallBoldText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">7.5sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/noto_bold</item>
+    </style>
+
+    <style name="Nav">
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">7.5sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/noto_medium</item>
+    </style>
+
+    <style name="ContentText">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">7.8sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/noto_regular</item>
+    </style>
+
 </resources>
