@@ -22,9 +22,13 @@ object PostRepository {
             .get().await().toObjects(Post::class.java)
     }
 
-    suspend fun getPostsByCategory(category: String): List<Post> {
-        return posts.whereEqualTo("category", category)
-            .get().await().toObjects(Post::class.java)
+    suspend fun getPostsByTags(tagIds: List<String>, containsAll: Boolean = false): List<Post> {
+        return if (containsAll) {
+            getAllPosts().filter { it.tags.containsAll(tagIds) }
+        } else {
+            posts.whereArrayContainsAny("tags", tagIds)
+                .get().await().toObjects(Post::class.java)
+        }
     }
 
     suspend fun getPostsByAuthor(userId: String): List<Post> {

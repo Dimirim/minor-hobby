@@ -6,8 +6,8 @@ data class Post(
     val author: String = "",
     val title: String = "",
     val content: String = "",
-    val image: List<String> = listOf(),
-    val category: String = "",
+    val images: List<String> = listOf(),
+    val tags: List<String> = listOf(),
     val hobby: String = "",
     @DocumentId val id: String = ""
 )
