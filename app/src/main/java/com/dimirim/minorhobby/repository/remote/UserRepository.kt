@@ -16,4 +16,8 @@ object UserRepository {
     suspend fun getUserById(id: String): User? {
         return users.document(id).get().await().toObject(User::class.java)
     }
+
+    suspend fun getPopulationOfHobby(hobbyId: String): Int {
+        return users.whereArrayContains("hobbies", hobbyId).get().await().size()
+    }
 }
