@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/thumbnailImageView"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/default_image" />
+
+        <TextView
+            android:id="titleTextView"
+            style="@style/SmallBoldText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            tools:text="DJI 드론 중고 판매합니다_택포 10" />
+
+        <TextView
+            android:id="@+id/subtitleTextView"
+            style="@style/ContentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:singleLine="true"
+            android:textColor="@color/colorPrimaryDark"
+            tools:text="DJI 드론 중고 판매합니다_택포 10" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="15dp"
+            tools:layout_editor_absoluteX="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                tools:src="@drawable/default_image" />
+
+            <TextView
+                android:id="@+id/writerTextView"
+                style="@style/BigMediumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/profileImageView"
+                android:lineSpacingExtra="5sp"
+                android:textColor="#000000"
+                android:textSize="10.5sp"
+                tools:text="마이너" />
+
+            <TextView
+                android:id="@+id/dateTextView"
+                style="@style/BigMediumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/writerTextView"
+                android:lineSpacingExtra="5sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10.5sp"
+                tools:text="2020.02.10" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/favoriteImageView"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_favorite_24px" />
+
+                <TextView
+                    android:id="@+id/favoriteTextView"
+                    style="@style/BigMediumText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:lineSpacingExtra="6sp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp"
+                    tools:text="363" />
+
+                <TextView
+                    android:id="@+id/viewTextView"
+                    style="@style/BigRegularText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:lineSpacingExtra="6sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    tools:text="2,363 view" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>
