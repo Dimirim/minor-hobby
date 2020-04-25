@@ -60,8 +60,8 @@
             android:layout_marginStart="3dp"
             android:layout_marginBottom="3dp"
             android:background="@color/colorTransparent"
-            android:text="# 중고거래"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:text="# 중고거래" />
 
         <View
             android:layout_width="match_parent"
