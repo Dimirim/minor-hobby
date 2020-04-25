@@ -20,4 +20,9 @@ object UserRepository {
     suspend fun getPopulationOfHobby(hobbyId: String): Int {
         return users.whereArrayContains("hobbies", hobbyId).get().await().size()
     }
+
+    suspend fun User.update(field: String, value: Any): User {
+        users.document(this.id).update(field, value)
+        return getUserById(this.id)!!
+    }
 }

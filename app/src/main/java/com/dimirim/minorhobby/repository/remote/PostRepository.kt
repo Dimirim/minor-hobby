@@ -49,4 +49,9 @@ object PostRepository {
         posts.document(this.id).update("views", this.likes + 1).await()
         this.views++
     }
+
+    suspend fun Post.update(field: String, value: Any): Post {
+        posts.document(this.id).update(field, value)
+        return getPostById(this.id)!!
+    }
 }
