@@ -73,7 +73,7 @@
             android:lineSpacingExtra="6.5sp"
             android:textColor="@color/colorAccent"
             android:textSize="13.5sp"
-            tools:text="건너뛰기" />
+            android:text="건너뛰기" />
 
         <ImageView
             android:layout_width="21dp"
