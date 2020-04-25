@@ -6,4 +6,5 @@
     android:background="@color/colorPrimary"
     tools:context=".ui.setting.SettingActivity">
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
