@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:background="@color/colorTransparent"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView

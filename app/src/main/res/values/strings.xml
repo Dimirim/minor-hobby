@@ -1,15 +1,21 @@
 <resources>
     <string name="app_name">마하</string>
 
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+    <string-array name="places_array">
+        <item>경기도</item>
+        <item>강원도</item>
+        <item>충청도</item>
+        <item>전라도</item>
+        <item>경상도</item>
+        <item>서울특별시</item>
+        <item>부산광역시</item>
+        <item>대구광역시</item>
+        <item>인천광역시</item>
+        <item>광주광역시</item>
+        <item>대전광역시</item>
+        <item>울산광역시</item>
+        <item>세종특별자치시</item>
+        <item>제주특별자치도</item>
     </string-array>
 
     <string name="info_set_profile"><b>프로필을</b>\n설정해주세요!</string>

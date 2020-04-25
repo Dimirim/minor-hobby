@@ -82,7 +82,7 @@
             android:lineSpacingExtra="6.5sp"
             android:textColor="@color/colorAccent"
             android:textSize="13.5sp"
-            tools:text="시작하기" />
+            android:text="시작하기" />
 
         <ImageView
             android:layout_width="21dp"

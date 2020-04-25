@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     tools:context=".ui.hobby_detail.HobbyDetailActivity">
 
     <LinearLayout
@@ -33,7 +34,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/tagRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="21dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="25dp"
                     android:orientation="horizontal"

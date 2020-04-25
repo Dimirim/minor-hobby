@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context=".ui.main.MainActivity">
 
     <RelativeLayout
@@ -53,7 +54,7 @@
             android:lineSpacingExtra="7.5sp"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
-            tools:text=" 님의 취미" />
+            android:text=" 님의 취미" />
 
     </LinearLayout>
 
@@ -76,7 +77,7 @@
         android:lineSpacingExtra="7.5sp"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
-        tools:text="게시물" />
+        android:text="게시물" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recommend_hobby"

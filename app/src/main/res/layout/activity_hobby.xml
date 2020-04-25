@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context=".ui.hobby.HobbyActivity">
 
     <RelativeLayout
@@ -31,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            tools:text="드론" />
+            android:text="드론" />
 
         <TextView
             android:id="@+id/writeBtn"
@@ -41,7 +42,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:textColor="@color/colorAccent"
-            tools:text="글쓰기" />
+            android:text="글쓰기" />
 
     </RelativeLayout>
 
