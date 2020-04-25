@@ -17,6 +17,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.dimirim.minorhobby.ui.custom.CupertinoEditText
+        android:id="@+id/cupertinoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="30dp"
+        app:hint="닉네임을 입력하세요."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:title="닉네임" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/cupertinoEditText"
+        tools:layout_editor_absoluteX="30dp">
+
+        <TextView
+            style="@style/SmallBoldText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지역" />
+
+        <Spinner
+            android:id="@+id/planets_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textView"
         style="@style/BigRegularText"
@@ -24,37 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="60dp"
-        android:text="@string/info_set_profile"
+        android:text="@string/info_set_detail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
-        android:layout_width="129dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/user" />
-
-        <ImageButton
-            android:layout_width="27dp"
-            android:layout_height="27dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="3dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/shape_circle"
-            android:contentDescription="add"
-            android:elevation="8dp"
-            android:src="@drawable/ic_add_24px" />
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="146dp"
@@ -73,7 +82,7 @@
             android:lineSpacingExtra="6.5sp"
             android:textColor="@color/colorAccent"
             android:textSize="13.5sp"
-            tools:text="건너뛰기" />
+            tools:text="시작하기" />
 
         <ImageView
             android:layout_width="21dp"
