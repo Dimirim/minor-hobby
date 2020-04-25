@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_name"
+        android:theme="@style/SmallBoldText" />
+
+    <EditText
+        android:id="@+id/edittext_main"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/colorTransparent"
+        android:fontFamily="@font/noto_regular"
+        android:hint="@string/default_hint"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:scrollbars="vertical"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorPrimaryDarkLight"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/text_warning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/default_warning"
+        android:textColor="@color/colorRed"
+        android:theme="@style/ContentText"
+        android:visibility="gone" />
+
+</LinearLayout>

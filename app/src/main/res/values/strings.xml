@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">마하</string>
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+    <string name="info_set_profile"><b>프로필을</b>\n설정해주세요!</string>
+    <string name="info_set_detail"><b>닉네임과</b>\n<b>지역</b>을\n설정해주세요!</string>
+
+    <string name="default_hint">제목을 입력하세요...</string>
+    <string name="default_warning">제목을 꼭 입력해주세요</string>
+    <string name="text_name">이름</string>
 </resources>

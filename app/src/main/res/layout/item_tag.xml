@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="76dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/shape_round">
+
+        <TextView
+            android:id="@+id/tagText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:lineSpacingExtra="6.5sp"
+            android:textColor="@color/colorAccent"
+            android:textSize="11sp"
+            tools:text="중고거래" />
+
+    </RelativeLayout>
+
+</layout>
