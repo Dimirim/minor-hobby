@@ -7,6 +7,7 @@ data class User(
     val name: String = "",
     val profile: String = "",
     val region: String = "",
+    val hobbies: List<String> = listOf(),
     @DocumentId
     val id: String = ""
 )
