@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
     val myHobbyList: ObservableArrayList<Hobby> = ObservableArrayList<Hobby>()
     val postList: ObservableArrayList<Post> = ObservableArrayList<Post>()
+    val bannerList: ArrayList<String> = ArrayList<String>()
 
     init {
         viewModelScope.launch {

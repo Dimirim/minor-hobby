@@ -2,6 +2,7 @@ package com.dimirim.minorhobby.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.databinding.ItemHobbyRoundBinding
@@ -42,5 +43,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.postList
         )
         postRecyclerView.adapter = postAdapter
+
+        val fragments: ArrayList<Fragment> = ArrayList()
     }
 }
