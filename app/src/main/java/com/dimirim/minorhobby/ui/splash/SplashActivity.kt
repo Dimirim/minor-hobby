@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (getPreferences(Context.MODE_PRIVATE).getBoolean("registered", false)) {
+        if (getSharedPreferences("app_setting", Context.MODE_PRIVATE).getBoolean("registered", false)) {
             startActivity(Intent(this, MainActivity::class.java))
         } else {
             FirebaseAuth.getInstance().signOut()

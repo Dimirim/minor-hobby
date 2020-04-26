@@ -36,8 +36,10 @@ class RegisterDetailActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             UserRepository.addUser(intent.getStringExtra("id")!!, user)
-            startActivity(Intent(this@RegisterDetailActivity, MainActivity::class.java))
-            getPreferences(Context.MODE_PRIVATE).edit().putBoolean("registered", true).apply()
+            val intent = Intent(this@RegisterDetailActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            getSharedPreferences("app_setting", Context.MODE_PRIVATE).edit().putBoolean("registered", true).apply()
         }
     }
 
