@@ -5,14 +5,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dimirim.minorhobby.ui.login.LoginActivity
 import com.dimirim.minorhobby.ui.main.MainActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
+    private val auth by lazy { FirebaseAuth.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val sharedPreferences = getSharedPreferences("User", 0)
 
-        if (sharedPreferences.getBoolean("logged_in", false)) {
+        if (auth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
         } else {
             startActivity(Intent(this, LoginActivity::class.java))
