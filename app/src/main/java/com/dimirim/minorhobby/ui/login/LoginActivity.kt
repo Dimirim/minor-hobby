@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, RegisterActivity::class.java).apply {
             putExtra("id", user.uid)
             putExtra("email", user.email)
-            putExtra("profile", user.photoUrl)
+            putExtra("profile", user.photoUrl.toString())
         }
         startActivity(intent)
     }

@@ -10,13 +10,17 @@ import com.dimirim.minorhobby.repository.remote.ImageRepository
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.coroutines.launch
 
+private const val REQUEST_IMAGE = 0
+
 class RegisterActivity : AppCompatActivity() {
-    private val REQUEST_IMAGE = 0
     private var imageUrl = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        imageUrl = intent.getStringExtra("profile") ?: ""
+        if (imageUrl.isNotBlank()) Glide.with(this).load(imageUrl).into(profileImageView)
 
         editProfileBtn.setOnClickListener {
             val intent = Intent().apply {
@@ -28,7 +32,12 @@ class RegisterActivity : AppCompatActivity() {
 
         backBtn.setOnClickListener { finish() }
         skipBtn.setOnClickListener {
-            startActivity(Intent(this, RegisterDetailActivity::class.java))
+            val intent = Intent(this, RegisterDetailActivity::class.java).apply {
+                putExtra("id", intent.getStringExtra("id"))
+                putExtra("email", intent.getStringExtra("email"))
+                putExtra("profile", imageUrl)
+            }
+            startActivity(intent)
         }
     }
 
