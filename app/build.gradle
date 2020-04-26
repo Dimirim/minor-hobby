@@ -48,6 +48,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.google.android:flexbox:2.0.1'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3@aar'
 
     // Utils
     implementation 'com.github.bumptech.glide:glide:4.11.0'
