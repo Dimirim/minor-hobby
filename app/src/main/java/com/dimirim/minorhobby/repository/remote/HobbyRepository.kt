@@ -14,10 +14,17 @@ object HobbyRepository {
     }
 
     suspend fun getHobbyById(id: String): Hobby? {
-        return hobbies.document(id).get().await().toObject(Hobby::class.java)
+        val hobby = hobbies.document(id).get().await()
+            .toObject(Hobby::class.java) ?: return null
+        hobby.population = UserRepository.getPopulationOfHobby(hobby.id)
+        return hobby
     }
 
     suspend fun getAllHobbies(): List<Hobby> {
-        return hobbies.get().await().toObjects(Hobby::class.java)
+        val hobbies = hobbies.get().await().toObjects(Hobby::class.java)
+        hobbies.map {
+            it.population = UserRepository.getPopulationOfHobby(it.id)
+        }
+        return hobbies
     }
 }
