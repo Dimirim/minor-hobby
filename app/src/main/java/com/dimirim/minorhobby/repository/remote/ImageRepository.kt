@@ -13,7 +13,7 @@ object ImageRepository {
     private val imageRef
         get() = storage.child("images/${System.currentTimeMillis()}.jpg")
 
-    private suspend fun uploadImage(bitmap: Bitmap): String {
+    suspend fun uploadImage(bitmap: Bitmap): String {
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
@@ -22,17 +22,17 @@ object ImageRepository {
             .storage.downloadUrl.await().toString()
     }
 
-    private suspend fun uploadImage(stream: FileInputStream): String {
+    suspend fun uploadImage(stream: FileInputStream): String {
         return imageRef.putStream(stream).await()
             .storage.downloadUrl.await().toString()
     }
 
-    private suspend fun uploadImage(uri: Uri): String {
+    suspend fun uploadImage(uri: Uri): String {
         return imageRef.putFile(uri).await()
             .storage.downloadUrl.await().toString()
     }
 
-    private suspend fun deleteImage(fileName: String) {
+    suspend fun deleteImage(fileName: String) {
         storage.child("images/$fileName").delete().await()
     }
 }
