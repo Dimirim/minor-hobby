@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="item"
+            type="com.dimirim.minorhobby.models.Hobby" />
+    </data>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -10,6 +17,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/hobbyImage"
             android:layout_width="84dp"
             android:layout_height="84dp"
             tools:src="@drawable/default_image" />
@@ -21,6 +29,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:lineSpacingExtra="6sp"
+            android:text="@{item.name}"
             android:textColor="#333333"
             android:textSize="12sp"
             tools:text="프랑스 자수" />
@@ -31,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:lineSpacingExtra="6sp"
+            android:text="@{@string/hobby_population(item.population)}"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="12sp"
             tools:text="3,202 명" />
