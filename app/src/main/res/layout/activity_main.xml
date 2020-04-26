@@ -4,6 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.MainActivity">
 
+    <data>
+
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +61,7 @@
                     app:piv_selectedColor="@color/colorAccent"
                     app:piv_unselectedColor="#BBBBBB"
                     app:piv_viewPager="@id/bannerViewPager"
-                    tools:piv_radius="3dp" />
+                    app:piv_radius="3dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -109,7 +113,7 @@
                     android:textSize="16sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recommend_hobby"
+                    android:id="@+id/postRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"

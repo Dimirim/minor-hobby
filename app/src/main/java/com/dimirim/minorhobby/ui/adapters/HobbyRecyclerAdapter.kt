@@ -52,3 +52,4 @@ class HobbyRoundViewHolder(private val binding: ItemHobbyRoundBinding,
             .into(binding.hobbyImage)
     }
 }
+
