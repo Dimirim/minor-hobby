@@ -1,7 +1,6 @@
-package com.dimirim.minorhobby.ui.main
+package com.dimirim.minorhobby.ui.profile
 
 import androidx.databinding.ObservableArrayList
-import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimirim.minorhobby.models.Hobby
@@ -12,18 +11,17 @@ import com.dimirim.minorhobby.repository.remote.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class ProfileViewModel : ViewModel() {
     val id = FirebaseAuth.getInstance().currentUser?.uid
     val myHobbyList: ObservableArrayList<Hobby> = ObservableArrayList<Hobby>()
-    val postList: ObservableArrayList<Post> = ObservableArrayList<Post>()
-    val bannerList: ArrayList<String> = ArrayList<String>()
-    val user = ObservableField<User>()
+    val myPostList: ObservableArrayList<Post> = ObservableArrayList<Post>()
+    var user: User? = User()
 
     init {
         viewModelScope.launch {
             loadMyHobby()
-            loadPost()
-            user.set(getUser())
+            loadMyPost()
+            user = getUser()
         }
     }
 
@@ -38,16 +36,8 @@ class MainViewModel : ViewModel() {
         )
     }
 
-    suspend fun loadPost() {
+    suspend fun loadMyPost() {
 
-    }
-
-    suspend fun loadBanner(): ArrayList<String> {
-        bannerList.add("https://firebasestorage.googleapis.com/v0/b/minorhobby-40140.appspot.com/o/banner%2Fbanner.PNG?alt=media&token=b7fd5b24-cfb2-4b22-88a4-a50d8b504b7e")
-        bannerList.add("https://firebasestorage.googleapis.com/v0/b/minorhobby-40140.appspot.com/o/banner%2Fbanner.PNG?alt=media&token=b7fd5b24-cfb2-4b22-88a4-a50d8b504b7e")
-        bannerList.add("https://firebasestorage.googleapis.com/v0/b/minorhobby-40140.appspot.com/o/banner%2Fbanner.PNG?alt=media&token=b7fd5b24-cfb2-4b22-88a4-a50d8b504b7e")
-
-        return bannerList
     }
 
     suspend fun getUser(): User? {

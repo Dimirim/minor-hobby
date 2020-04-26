@@ -4,6 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.profile.ProfileActivity">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.dimirim.minorhobby.ui.profile.ProfileViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,6 +53,7 @@
         </RelativeLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImageView"
             android:layout_width="117dp"
             android:layout_height="117dp"
             android:layout_gravity="center_horizontal"
@@ -53,15 +61,18 @@
             android:src="@drawable/default_image" />
 
         <TextView
+            android:id="@+id/nameTextView"
             style="@style/BigBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="13dp"
             android:textSize="21.5sp"
+            android:text="@{vm.user.name}"
             tools:text="마이너" />
 
         <TextView
+            android:id="@+id/regionTextView"
             style="@style/BigMediumText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,6 +80,7 @@
             android:layout_marginTop="3dp"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="12sp"
+            android:text="@{vm.user.region}"
             tools:text="서울특별시 중구" />
 
         <RelativeLayout
@@ -96,6 +108,7 @@
                 android:src="@drawable/ic_keyboard_arrow_right_24px" />
 
             <TextView
+                android:id="@+id/addHobbyBtn"
                 style="@style/BigMediumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
