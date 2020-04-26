@@ -10,13 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.setting.SettingActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
@@ -25,7 +19,14 @@
         <activity android:name=".ui.hobby_detail.HobbyDetailActivity" />
         <activity android:name=".ui.hobby.HobbyActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.splash.SplashActivity" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 
