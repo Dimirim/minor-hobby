@@ -1,134 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical"
-    tools:context=".ui.hobby_write.HobbyWriteActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
-        android:id="@+id/navLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="15dp">
+    <data>
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="21dp"
-            android:layout_height="16dp"
-            android:layout_centerVertical="true"
-            android:background="@color/colorTransparent"
-            android:contentDescription="back_btn"
-            android:src="@drawable/ic_back" />
-
-        <TextView
-            style="@style/Nav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="게시물 작성" />
-
-        <TextView
-            android:id="@+id/doneBtn"
-            style="@style/Nav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:text="완료"
-            android:textColor="@color/colorPrimaryDark" />
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="13dp"
-        android:background="@color/colorPrimaryDarkLight" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:orientation="horizontal"
-        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/navLayout"
-        tools:listitem="@layout/item_tag" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="13dp"
-        android:background="@color/colorPrimaryDarkLight" />
-
-    <EditText
-        style="@style/BigRegularText"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorTransparent"
-        android:hint="제목을 입력하세요"
-        android:textSize="16sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="13dp"
-        android:background="@color/colorPrimaryDarkLight" />
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-
-    </androidx.core.widget.NestedScrollView>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="13dp"
-        android:background="@color/colorPrimaryDarkLight" />
+        <variable
+            name="vm"
+            type="com.dimirim.minorhobby.ui.hobby_write.HobbyWriteViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        tools:context=".ui.hobby_write.HobbyWriteActivity">
 
-        <ImageButton
-            android:id="@+id/cameraBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorTransparent"
-            android:src="@drawable/ic_photo_camera_24px" />
+        <RelativeLayout
+            android:id="@+id/navLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="15dp">
 
-        <ImageButton
-            android:id="@+id/boldBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorTransparent"
-            android:src="@drawable/ic_format_bold_24px" />
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="21dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
+                android:background="@color/colorTransparent"
+                android:contentDescription="back_btn"
+                android:src="@drawable/ic_back" />
 
-        <ImageButton
-            android:id="@+id/italicBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            <TextView
+                style="@style/Nav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="게시물 작성" />
+
+            <TextView
+                android:id="@+id/doneBtn"
+                style="@style/Nav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="2dp"
+                android:onClick="@{(v) -> vm.onCompleteButtonClick(v)}"
+                android:text="완료"
+                android:textColor="@color/colorAccent" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorPrimaryDarkLight" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/tagsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            app:flexWrap="wrap"
+            app:layout_constraintTop_toBottomOf="@+id/navLayout" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorPrimaryDarkLight" />
+
+        <EditText
+            style="@style/BigRegularText"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
             android:background="@color/colorTransparent"
-            android:src="@drawable/ic_format_italic_24px" />
+            android:hint="제목을 입력하세요"
+            android:text="@={vm.title}"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorPrimaryDarkLight" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:hint="내용을 입력하세요"
+            android:padding="16dp"
+            android:text="@={vm.content}" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/colorPrimaryDarkLight" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/cameraBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_photo_camera_24px" />
+
+            <ImageButton
+                android:id="@+id/boldBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_format_bold_24px" />
+
+            <ImageButton
+                android:id="@+id/italicBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_format_italic_24px" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</layout>
