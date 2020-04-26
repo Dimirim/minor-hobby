@@ -10,91 +10,116 @@
         android:background="@color/colorPrimary"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="71dp"
-                android:layout_height="16dp"
-                android:layout_centerInParent="true"
-                android:contentDescription="logo"
-                android:src="@drawable/typo_purple" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImageView"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/user" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
 
-        </RelativeLayout>
+                    <ImageView
+                        android:layout_width="71dp"
+                        android:layout_height="16dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="logo"
+                        android:src="@drawable/typo_purple" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_marginTop="15dp" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImageView"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/user" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal">
+                </RelativeLayout>
 
-            <TextView
-                android:id="@+id/nameTextView"
-                style="@style/SmallBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="7.5sp"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                tools:text="마이너" />
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/bannerViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="15dp" />
 
-            <TextView
-                style="@style/SmallBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="7.5sp"
-                android:text=" 님의 취미"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp" />
+                <com.rd.PageIndicatorView
+                    android:id="@+id/pageIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    app:piv_animationType="slide"
+                    app:piv_selectedColor="@color/colorAccent"
+                    app:piv_unselectedColor="#BBBBBB"
+                    app:piv_viewPager="@id/bannerViewPager"
+                    tools:piv_radius="3dp" />
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/hobbyRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_hobby_round" />
+                    <TextView
+                        android:id="@+id/nameTextView"
+                        style="@style/SmallBoldText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="7.5sp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        tools:text="마이너" />
 
-        <TextView
-            style="@style/SmallBoldText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:lineSpacingExtra="7.5sp"
-            android:text="게시물"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp" />
+                    <TextView
+                        style="@style/SmallBoldText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="7.5sp"
+                        android:text=" 님의 취미"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommend_hobby"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_post" />
+                </LinearLayout>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/hobbyRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_hobby_round" />
+
+                <TextView
+                    style="@style/SmallBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:lineSpacingExtra="7.5sp"
+                    android:text="게시물"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recommend_hobby"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_post" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
 </layout>
