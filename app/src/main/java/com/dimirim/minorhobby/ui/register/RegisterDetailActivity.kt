@@ -1,11 +1,17 @@
 package com.dimirim.minorhobby.ui.register
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.dimirim.minorhobby.R
+import com.dimirim.minorhobby.models.User
+import com.dimirim.minorhobby.repository.remote.UserRepository
 import com.dimirim.minorhobby.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_register_detail.*
+import kotlinx.coroutines.launch
 
 class RegisterDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,8 +19,32 @@ class RegisterDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register_detail)
 
         nextBtn.setOnClickListener {
-            startActivity(Intent(this@RegisterDetailActivity, MainActivity::class.java))
+            registerUser()
         }
         backBtn.setOnClickListener { finish() }
+    }
+
+    private fun registerUser() {
+        if (!checkValidation()) return
+
+        val user = User(
+            intent.getStringExtra("email")!!,
+            cupertinoEditText.text,
+            intent.getStringExtra("profile")!!,
+            planets_spinner.selectedItem.toString()
+        )
+
+        lifecycleScope.launch {
+            UserRepository.addUser(intent.getStringExtra("id")!!, user)
+            startActivity(Intent(this@RegisterDetailActivity, MainActivity::class.java))
+            getPreferences(Context.MODE_PRIVATE).edit().putBoolean("registered", true).apply()
+        }
+    }
+
+    private fun checkValidation() = if (cupertinoEditText.text.isBlank()) {
+        Toast.makeText(this, R.string.info_set_detail, Toast.LENGTH_LONG).show()
+        false
+    } else {
+        true
     }
 }
