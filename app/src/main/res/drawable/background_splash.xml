@@ -6,5 +6,5 @@
         android:width="115dp"
         android:height="115dp"
         android:drawable="@drawable/logo"
-        android:gravity="center"></item>
+        android:gravity="center" />
 </layer-list>

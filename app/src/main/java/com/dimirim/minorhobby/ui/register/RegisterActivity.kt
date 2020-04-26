@@ -13,13 +13,17 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
         editProfileBtn.setOnClickListener {
             val intent = Intent().apply {
                 type = "image/*"
                 action = Intent.ACTION_GET_CONTENT
             }
             startActivityForResult(intent, REQUEST_IMAGE)
+        }
+
+        backBtn.setOnClickListener { finish() }
+        skipBtn.setOnClickListener {
+            startActivity(Intent(this, RegisterDetailActivity::class.java))
         }
     }
 

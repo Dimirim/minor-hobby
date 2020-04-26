@@ -8,6 +8,7 @@
     tools:context=".ui.register.RegisterActivity">
 
     <ImageButton
+        android:id="@+id/backBtn"
         android:layout_width="21dp"
         android:layout_height="16dp"
         android:layout_margin="15dp"
@@ -24,10 +25,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="30dp"
-        app:hint="닉네임을 입력하세요."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:hint="닉네임을 입력하세요."
         app:title="닉네임" />
 
     <LinearLayout
@@ -49,7 +50,8 @@
             android:id="@+id/planets_spinner"
             android:layout_width="fill_parent"
             android:layout_height="46dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:entries="@array/places_array" />
 
     </LinearLayout>
 
