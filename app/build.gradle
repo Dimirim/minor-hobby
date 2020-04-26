@@ -41,6 +41,8 @@ dependencies {
     // Firebase
     implementation 'com.google.firebase:firebase-firestore-ktx:21.4.3'
     implementation 'com.google.firebase:firebase-storage-ktx:19.1.1'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
 
     // Design
     implementation 'com.google.android.material:material:1.1.0'
