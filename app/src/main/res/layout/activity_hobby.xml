@@ -1,98 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary"
     tools:context=".ui.hobby.HobbyActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="21dp"
-            android:layout_height="16dp"
-            android:layout_centerVertical="true"
-            android:background="@color/colorTransparent"
-            android:contentDescription="back_btn"
-            android:src="@drawable/ic_back" />
+        <import type="androidx.databinding.ObservableArrayList" />
 
-        <TextView
-            style="@style/Nav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="드론" />
+        <import type="com.dimirim.minorhobby.models.Post" />
 
-        <TextView
-            android:id="@+id/writeBtn"
-            style="@style/Nav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:textColor="@color/colorAccent"
-            android:text="글쓰기" />
+        <variable
+            name="vm"
+            type="com.dimirim.minorhobby.ui.hobby.HobbyViewModel" />
 
-    </RelativeLayout>
+        <variable
+            name="item"
+            type="ObservableArrayList&lt;Post&gt;" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp">
+    </data>
 
-        <EditText
-            style="@style/BigMediumText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="3dp"
-            android:layout_marginBottom="3dp"
-            android:background="@color/colorTransparent"
-            android:textSize="14sp"
-            tools:text="# 중고거래" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorAccent" />
-
-        <ImageButton
-            android:id="@+id/filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@color/colorTransparent"
-            android:src="@drawable/ic_filter_list_24px" />
-
-    </RelativeLayout>
-
-    <TextView
-        style="@style/SmallBoldText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
-        android:text="게시물" />
-
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_post_large" />
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="21dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
+                android:background="@color/colorTransparent"
+                android:contentDescription="back_btn"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/hobbyNameTextView"
+                style="@style/Nav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="드론" />
+
+            <TextView
+                android:id="@+id/writeBtn"
+                style="@style/Nav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="글쓰기"
+                android:textColor="@color/colorAccent" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp">
+
+            <EditText
+                style="@style/BigMediumText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@color/colorTransparent"
+                android:textSize="14sp"
+                tools:text="# 중고거래" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorAccent" />
+
+            <ImageButton
+                android:id="@+id/filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_filter_list_24px" />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/SmallBoldText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:text="게시물" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            app:item="@{item}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_post_large" />
+
+    </LinearLayout>
+
+</layout>

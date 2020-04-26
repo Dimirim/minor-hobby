@@ -11,10 +11,11 @@ import com.bumptech.glide.Glide
 import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.databinding.ActivityMainBinding
 import com.dimirim.minorhobby.databinding.ItemHobbyRoundBinding
-import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
+import com.dimirim.minorhobby.databinding.ItemPostBinding
 import com.dimirim.minorhobby.ui.adapters.HobbyRecyclerAdapter
 import com.dimirim.minorhobby.ui.adapters.OnItemClickListener
 import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
+import com.dimirim.minorhobby.ui.hobby.HobbyActivity
 import com.dimirim.minorhobby.ui.main.banner.BannerFragment
 import com.dimirim.minorhobby.ui.main.banner.ViewPagerAdapter
 import com.dimirim.minorhobby.ui.profile.ProfileActivity
@@ -24,7 +25,7 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var hobbyAdapter: HobbyRecyclerAdapter<ItemHobbyRoundBinding>
-    private lateinit var postAdapter: PostRecyclerAdapter<ItemPostLargeBinding>
+    private lateinit var postAdapter: PostRecyclerAdapter<ItemPostBinding>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         binding.vm = viewModel
 
         lifecycleScope.launch {
-            viewModel.loadMyHobby()
             viewModel.loadPost()
 
             Glide.with(this@MainActivity).load(viewModel.getUser()?.profile).into(profileImageView)
@@ -49,12 +49,17 @@ class MainActivity : AppCompatActivity() {
             }
             val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, fragments)
             bannerViewPager.adapter = viewPagerAdapter
+
+            viewModel.loadMyHobby()
         }
 
         hobbyAdapter = HobbyRecyclerAdapter(
             object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
-
+                    var intent = Intent(this@MainActivity, HobbyActivity::class.java)
+                    intent.putExtra("hobbyName", viewModel.myHobbyList.get(position).name)
+                    intent.putExtra("hobbyId", viewModel.myHobbyList.get(position).id)
+                    startActivityForResult(intent, 0)
                 }
             },
             R.layout.item_hobby_round,
@@ -76,6 +81,14 @@ class MainActivity : AppCompatActivity() {
 
         profileImageView.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        lifecycleScope.launch {
+            viewModel.loadPost()
+            viewModel.loadMyHobby()
         }
     }
 }

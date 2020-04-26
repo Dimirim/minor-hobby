@@ -16,7 +16,7 @@ class HobbyWriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HobbyWriteViewModel::class.java)
-
+        viewModel.hobbyId = intent.getStringExtra("hobbyId")
         val binding = DataBindingUtil
             .setContentView<ActivityHobbyWriteBinding>(this, R.layout.activity_hobby_write)
         binding.lifecycleOwner = this
@@ -30,5 +30,9 @@ class HobbyWriteActivity : AppCompatActivity() {
                 tagsLayout.addView(view.root)
             }
         })
+
+        backBtn.setOnClickListener {
+            finish()
+        }
     }
 }

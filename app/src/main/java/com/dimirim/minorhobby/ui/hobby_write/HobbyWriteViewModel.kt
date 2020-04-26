@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 class HobbyWriteViewModel : ViewModel() {
+    var hobbyId = ""
     val title = MutableLiveData("")
     val content = MutableLiveData("")
     val appliedTags = MutableLiveData(listOf<Tag>())
@@ -32,8 +33,12 @@ class HobbyWriteViewModel : ViewModel() {
         val post = Post(
             FirebaseAuth.getInstance().currentUser!!.uid,
             title.value!!,
-            content.value!!
+            content.value!!,
+            listOf(),
+            listOf(),
+            hobbyId
         )
+
         PostRepository.addPost(post)
         Toast.makeText(view.context, "게시물이 작성 되었습니다", Toast.LENGTH_LONG).show()
     }

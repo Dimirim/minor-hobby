@@ -96,6 +96,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@android:color/white"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDarkLight"
             android:hint="내용을 입력하세요"
             android:padding="16dp"
             android:text="@={vm.content}" />
