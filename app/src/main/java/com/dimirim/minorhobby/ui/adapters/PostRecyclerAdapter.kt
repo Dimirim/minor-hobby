@@ -3,7 +3,9 @@ package com.dimirim.minorhobby.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil.inflate
+import androidx.databinding.ObservableArrayList
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -46,6 +48,16 @@ class PostRecyclerAdapter<T : ViewDataBinding>(
             is PostLargeViewHolder -> holder.bind(position, items[position])
         }
     }
+
+    companion object {
+        @BindingAdapter("bind:item")
+        @JvmStatic
+        fun bindItem(recyclerView: RecyclerView, items: ObservableArrayList<Post>) {
+            val adapter: PostRecyclerAdapter<ViewDataBinding> =
+                recyclerView.adapter as PostRecyclerAdapter<ViewDataBinding>
+            adapter.setItems(items)
+        }
+    }
 }
 
 class PostViewHolder(
@@ -57,9 +69,14 @@ class PostViewHolder(
 
     fun bind(position: Int, post: Post) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
-        Glide.with(context)
-            .load(post.images[0])
-            .into(binding.thumbnailImageView)
+        binding.item = post
+        binding.likesTextView.text = post.likes.toString()
+        binding.viewTextView.text = post.views.toString() + " views"
+        if (post.images.isNotEmpty()) {
+            Glide.with(context)
+                .load(post.images[0])
+                .into(binding.thumbnailImageView)
+        }
     }
 }
 
@@ -72,9 +89,16 @@ class PostLargeViewHolder(
 
     fun bind(position: Int, post: Post) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
-        Glide.with(context)
-            .load(post.images[0])
-            .into(binding.thumbnailImageView)
+        binding.item = post
+        binding.favoriteTextView.text = post.likes.toString()
+        binding.dateTextView.text = post.created.toDate().toString()
+        binding.viewTextView.text = post.views.toString() + " views"
+
+        if (post.images.isNotEmpty()) {
+            Glide.with(context)
+                .load(post.images[0])
+                .into(binding.thumbnailImageView)
+        }
     }
 }
 

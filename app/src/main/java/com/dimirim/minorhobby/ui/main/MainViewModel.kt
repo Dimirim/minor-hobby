@@ -8,6 +8,7 @@ import com.dimirim.minorhobby.models.Hobby
 import com.dimirim.minorhobby.models.Post
 import com.dimirim.minorhobby.models.User
 import com.dimirim.minorhobby.repository.remote.HobbyRepository
+import com.dimirim.minorhobby.repository.remote.PostRepository
 import com.dimirim.minorhobby.repository.remote.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
@@ -33,7 +34,8 @@ class MainViewModel : ViewModel() {
     }
 
     suspend fun loadPost() {
-
+        postList.clear()
+        postList.addAll(PostRepository.getAllPosts())
     }
 
     suspend fun loadBanner(): ArrayList<String> {
