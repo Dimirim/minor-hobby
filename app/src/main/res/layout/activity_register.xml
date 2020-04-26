@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
+        android:id="@+id/editProfileBtn"
         android:layout_width="129dp"
         android:layout_height="129dp"
         android:layout_marginTop="15dp"
