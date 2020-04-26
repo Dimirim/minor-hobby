@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
         binding.vm = viewModel
 
         lifecycleScope.launch {
+            viewModel.loadMyHobby()
+            viewModel.loadPost()
+
             Glide.with(this@MainActivity).load(viewModel.getUser()?.profile).into(profileImageView)
 
             val fragments: ArrayList<Fragment> = ArrayList()

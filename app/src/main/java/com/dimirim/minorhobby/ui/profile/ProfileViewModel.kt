@@ -1,6 +1,7 @@
 package com.dimirim.minorhobby.ui.profile
 
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimirim.minorhobby.models.Hobby
@@ -15,28 +16,23 @@ class ProfileViewModel : ViewModel() {
     val id = FirebaseAuth.getInstance().currentUser?.uid
     val myHobbyList: ObservableArrayList<Hobby> = ObservableArrayList<Hobby>()
     val myPostList: ObservableArrayList<Post> = ObservableArrayList<Post>()
-    var user: User? = User()
+    var user = ObservableField<User>()
 
     init {
         viewModelScope.launch {
-            loadMyHobby()
-            loadMyPost()
-            user = getUser()
+            user.set(getUser())
         }
     }
 
     suspend fun loadMyHobby() {
-        HobbyRepository.getHobbyById(id ?: "")
-
-        myHobbyList.add(
-            Hobby(
-                "삼다수",
-                "https://img3.tmon.kr/cdn2/deals/2019/03/25/1915940582/1915940582_front_e0ef78e040.jpg"
-            )
-        )
+        myHobbyList.clear()
+        for (id in getUser()!!.hobbies) {
+            myHobbyList.add(HobbyRepository.getHobbyById(id))
+        }
     }
 
     suspend fun loadMyPost() {
+        myPostList.clear()
 
     }
 
