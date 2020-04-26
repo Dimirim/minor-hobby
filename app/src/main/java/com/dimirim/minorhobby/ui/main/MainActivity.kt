@@ -10,6 +10,8 @@ import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
 import com.dimirim.minorhobby.ui.adapters.HobbyRecyclerAdapter
 import com.dimirim.minorhobby.ui.adapters.OnItemClickListener
 import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
+import com.dimirim.minorhobby.ui.main.banner.BannerFragment
+import com.dimirim.minorhobby.ui.main.banner.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -45,5 +47,14 @@ class MainActivity : AppCompatActivity() {
         postRecyclerView.adapter = postAdapter
 
         val fragments: ArrayList<Fragment> = ArrayList()
+        for (image in viewModel.bannerList) {
+            val imageUrl = Bundle().apply {
+                putString("image", image)
+            }
+            fragments.add(BannerFragment().apply { arguments = imageUrl })
+        }
+
+        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, fragments)
+        bannerViewPager.adapter = viewPagerAdapter
     }
 }
