@@ -6,7 +6,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
-import java.io.FileInputStream
+import java.io.InputStream
 
 object ImageRepository {
     private val storage = Firebase.storage.reference
@@ -22,7 +22,7 @@ object ImageRepository {
             .storage.downloadUrl.await().toString()
     }
 
-    suspend fun uploadImage(stream: FileInputStream): String {
+    suspend fun uploadImage(stream: InputStream): String {
         return imageRef.putStream(stream).await()
             .storage.downloadUrl.await().toString()
     }
