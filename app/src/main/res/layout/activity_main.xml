@@ -73,7 +73,7 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_round_recommend" />
+            tools:listitem="@layout/item_hobby_round" />
 
         <TextView
             style="@style/SmallBoldText"
@@ -93,7 +93,7 @@
             android:layout_marginStart="15dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_post_recommend" />
+            tools:listitem="@layout/item_post" />
 
     </LinearLayout>
 
