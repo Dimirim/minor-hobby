@@ -47,8 +47,10 @@ class HobbyRoundViewHolder(private val binding: ItemHobbyRoundBinding,
 
     fun bind(position: Int, hobby: Hobby) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
+        binding.item = hobby
         Glide.with(context)
             .load(hobby.image)
             .into(binding.hobbyImage)
     }
 }
+
