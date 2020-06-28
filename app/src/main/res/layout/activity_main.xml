@@ -31,6 +31,7 @@
                     android:layout_height="50dp">
 
                     <ImageView
+                        android:id="@+id/logo_maha"
                         android:layout_width="71dp"
                         android:layout_height="16dp"
                         android:layout_centerInParent="true"

@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         postRecyclerView.adapter = postAdapter
 
         profileImageView.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivityForResult(Intent(this, ProfileActivity::class.java), 0)
         }
     }
 

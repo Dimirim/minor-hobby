@@ -2,6 +2,7 @@ package com.dimirim.minorhobby.repository.remote
 
 import com.dimirim.minorhobby.models.Post
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
@@ -33,11 +34,13 @@ object PostRepository {
 
     suspend fun getPostsByAuthor(userId: String): List<Post> {
         return posts.whereEqualTo("author", userId)
+//            .orderBy("created", Query.Direction.DESCENDING)
             .get().await().toObjects(Post::class.java)
     }
 
     suspend fun getAllPosts(): List<Post> {
-        return posts.get().await().toObjects(Post::class.java)
+        return posts.orderBy("created", Query.Direction.DESCENDING)
+            .get().await().toObjects(Post::class.java)
     }
 
     suspend fun Post.addLike() {
