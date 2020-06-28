@@ -2,6 +2,7 @@
     <string name="app_name">마하</string>
 
     <string-array name="places_array">
+        <item>선택</item>
         <item>경기도</item>
         <item>강원도</item>
         <item>충청도</item>
@@ -21,6 +22,7 @@
     <string name="login_failed">로그인에 실패했습니다.</string>
     <string name="info_set_profile"><b>프로필을</b>\n설정해주세요!</string>
     <string name="info_set_detail"><b>닉네임과</b>\n<b>지역</b>을\n설정해주세요!</string>
+    <string name="info_wrong_register">닉네임과 지역을 설정해주세요!</string>
 
     <string name="default_hint">제목을 입력하세요…</string>
     <string name="default_warning">제목을 꼭 입력해주세요</string>
