@@ -51,7 +51,7 @@
             android:layout_width="fill_parent"
             android:layout_height="46dp"
             android:layout_marginTop="8dp"
-            android:entries="@array/places_array" />
+            android:background="@drawable/background_spinner" />
 
     </LinearLayout>
 
