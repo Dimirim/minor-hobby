@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.profile.ProfileActivity">
 
     <data>
@@ -67,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="13dp"
-            android:textSize="21.5sp"
             android:text="@{vm.user.name}"
+            android:textSize="21.5sp"
             tools:text="마이너" />
 
         <TextView
@@ -78,9 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="3dp"
+            android:text="@{vm.user.region}"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="12sp"
-            android:text="@{vm.user.region}"
             tools:text="서울특별시 중구" />
 
         <RelativeLayout

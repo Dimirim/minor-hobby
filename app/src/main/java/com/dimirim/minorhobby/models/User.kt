@@ -8,6 +8,7 @@ data class User(
     val profile: String = "",
     val region: String = "",
     val hobbies: List<String> = listOf(),
+    val pushAlert: Boolean = false,
     @DocumentId
     val id: String = ""
 )
