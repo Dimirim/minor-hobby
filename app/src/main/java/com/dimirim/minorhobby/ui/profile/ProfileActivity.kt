@@ -75,6 +75,8 @@ class ProfileActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         lifecycleScope.launch {
+            Glide.with(this@ProfileActivity).load(viewModel.getUser()?.profile)
+                .into(profileImageView)
             viewModel.loadMyHobby()
             viewModel.loadMyPost()
         }
