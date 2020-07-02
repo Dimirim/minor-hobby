@@ -28,6 +28,10 @@ class CupertinoEditText(context: Context, private val attrs: AttributeSet?) :
         initializeViews(context, attrs)
     }
 
+    fun setBasicText(text: String) {
+        edittext_main.text = Editable.Factory.getInstance().newEditable(text)
+    }
+
     private fun initializeViews(
         context: Context,
         attrs: AttributeSet?

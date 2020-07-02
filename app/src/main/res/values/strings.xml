@@ -19,20 +19,6 @@
         <item>제주특별자치도</item>
     </string-array>
 
-    <string-array name="action_list">
-        <item>action 1</item>
-        <item>action 2</item>
-        <item>action 3</item>
-        <item>action 4</item>
-    </string-array>
-    <string-array name="action_values">
-        <item>value 1</item>
-        <item>value 2</item>
-        <item>value 3</item>
-        <item>value 4</item>
-    </string-array>
-
-
     <string name="login_failed">로그인에 실패했습니다.</string>
     <string name="info_set_profile"><b>프로필을</b>\n설정해주세요!</string>
     <string name="info_set_detail"><b>닉네임과</b>\n<b>지역</b>을\n설정해주세요!</string>
