@@ -28,7 +28,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="?attr/actionBarSize">
 
                     <ImageView
                         android:id="@+id/logo_maha"
