@@ -19,16 +19,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="15dp">
+            android:layout_height="?attr/actionBarSize">
 
             <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="21dp"
                 android:layout_height="16dp"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
                 android:background="@color/colorTransparent"
                 android:contentDescription="back_btn"
                 android:src="@drawable/ic_back" />
@@ -46,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
                 android:background="@color/colorTransparent"
                 android:contentDescription="back_btn"
                 android:src="@drawable/ic_settings_24px" />
