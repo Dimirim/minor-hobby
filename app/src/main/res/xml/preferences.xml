@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:iconSpaceReserved="false">
+
+    <PreferenceScreen
+        android:key="key_profile_edit"
+        android:title="프로필 수정"
+        app:iconSpaceReserved="false" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="key_push_on"
+        android:title="푸시 알림"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceScreen
+        android:title="업데이트 안내"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceScreen
+        android:title="취미 및 태그 추가 안내"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceScreen
+        android:title="서비스 점검/중단 안내"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceScreen
+        android:title="오픈소스 라이선스"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceScreen
+        android:title="개인정보 처리방침"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceScreen
+        android:title="회사정보"
+        app:iconSpaceReserved="false" />
+
+    <PreferenceScreen
+        android:title="버전 5.1.8"
+        app:iconSpaceReserved="false" />
+
+</PreferenceScreen>

@@ -9,15 +9,23 @@
 
     <application
         android:allowBackup="false"
+        android:configChanges="screenSize|orientation"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:configChanges="screenSize|orientation"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".ui.profile_edit.ProfileEditActivity" />
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.setting.SettingActivity" />
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:theme="@style/PreferenceScreen">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.hobby_write.HobbyWriteActivity" />
@@ -29,7 +37,6 @@
             android:name=".ui.register.RegisterDetailActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.hobby_add.HobbyAddActivity" />
-
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -38,7 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

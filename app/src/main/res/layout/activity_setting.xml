@@ -1,10 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#ffffff"
+    android:orientation="vertical"
     tools:context=".ui.setting.SettingActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="21dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:background="@color/colorTransparent"
+            android:contentDescription="back_btn"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/Nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="설정" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="32.5dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="32.5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            tools:src="@drawable/default_image" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/profileImageView"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                style="@style/BigBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="21.5sp"
+                tools:text="마이너" />
+
+            <TextView
+                android:id="@+id/regionTextView"
+                style="@style/BigMediumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14.5sp"
+                tools:text="서울특별시 중구" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_pref"
+        android:name="com.dimirim.minorhobby.ui.setting.MainPreference"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

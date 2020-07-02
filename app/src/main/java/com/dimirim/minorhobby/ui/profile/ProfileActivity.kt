@@ -15,6 +15,7 @@ import com.dimirim.minorhobby.ui.adapters.HobbyRecyclerAdapter
 import com.dimirim.minorhobby.ui.adapters.OnItemClickListener
 import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
 import com.dimirim.minorhobby.ui.hobby_add.HobbyAddActivity
+import com.dimirim.minorhobby.ui.setting.SettingActivity
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.coroutines.launch
 
@@ -65,6 +66,10 @@ class ProfileActivity : AppCompatActivity() {
             startActivityForResult(Intent(this, HobbyAddActivity::class.java), 0)
         }
         backBtn.setOnClickListener { finish() }
+
+        settingBtn.setOnClickListener {
+            startActivityForResult(Intent(this@ProfileActivity, SettingActivity::class.java), 0)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
