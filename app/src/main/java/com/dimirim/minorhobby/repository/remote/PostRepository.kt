@@ -1,5 +1,6 @@
 package com.dimirim.minorhobby.repository.remote
 
+import android.util.Log
 import com.dimirim.minorhobby.models.Post
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.Query
@@ -19,8 +20,9 @@ object PostRepository {
     }
 
     suspend fun getPostsByHobby(hobbyId: String): List<Post> {
+        Log.d("test", "getPostsByHobby")
         return posts.whereEqualTo("hobby", hobbyId)
-//            .orderBy("created", Query.Direction.DESCENDING)
+            .orderBy("created", Query.Direction.DESCENDING)
             .get().await().toObjects(Post::class.java)
     }
 
