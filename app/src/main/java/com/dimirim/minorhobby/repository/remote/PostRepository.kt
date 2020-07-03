@@ -20,6 +20,7 @@ object PostRepository {
 
     suspend fun getPostsByHobby(hobbyId: String): List<Post> {
         return posts.whereEqualTo("hobby", hobbyId)
+//            .orderBy("created", Query.Direction.DESCENDING)
             .get().await().toObjects(Post::class.java)
     }
 
@@ -34,7 +35,7 @@ object PostRepository {
 
     suspend fun getPostsByAuthor(userId: String): List<Post> {
         return posts.whereEqualTo("author", userId)
-//            .orderBy("created", Query.Direction.DESCENDING)
+            .orderBy("created", Query.Direction.DESCENDING)
             .get().await().toObjects(Post::class.java)
     }
 

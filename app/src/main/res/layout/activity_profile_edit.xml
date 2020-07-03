@@ -27,8 +27,8 @@
 
             <ImageButton
                 android:id="@+id/backBtn"
-                android:layout_width="21dp"
-                android:layout_height="16dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:background="@color/colorTransparent"
@@ -48,7 +48,7 @@
             android:id="@+id/editProfileBtn"
             android:layout_width="129dp"
             android:layout_height="129dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
@@ -119,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/background_button"
             android:lineSpacingExtra="6.5sp"
             android:text="수정하기"
