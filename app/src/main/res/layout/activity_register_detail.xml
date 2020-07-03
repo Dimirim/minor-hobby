@@ -16,8 +16,8 @@
 
         <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="21dp"
-            android:layout_height="16dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:background="@color/colorTransparent"
