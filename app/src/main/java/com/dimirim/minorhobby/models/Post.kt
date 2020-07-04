@@ -6,7 +6,7 @@ import com.google.firebase.firestore.DocumentId
 import java.text.SimpleDateFormat
 
 data class Post(
-    val author: String = "",
+    val authorId: String = "",
     val title: String = "",
     val content: String = "",
     val images: List<String> = listOf(),
@@ -18,7 +18,7 @@ data class Post(
     @DocumentId val id: String = ""
 ) {
     @SuppressLint("SimpleDateFormat")
-    fun timestampToString(): String {
+    fun createdToString(): String {
         val dateFormat = SimpleDateFormat("yyyy.MM.dd")
         return dateFormat.format(created.toDate())
     }
