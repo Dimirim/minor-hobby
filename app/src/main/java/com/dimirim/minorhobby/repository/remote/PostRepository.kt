@@ -61,7 +61,7 @@ object PostRepository {
     }
 
     suspend fun Post.populate(): PopulatedPost {
-        val author = UserRepository.getUserById(authorId)!!
+        val author = UserRepository.getUserById(author)!!
         return PopulatedPost(
             author,
             title,

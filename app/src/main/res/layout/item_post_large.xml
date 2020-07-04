@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.dimirim.minorhobby.models.Post" />
+            type="com.dimirim.minorhobby.models.PopulatedPost" />
 
     </data>
 
@@ -73,6 +73,7 @@
                 android:layout_toEndOf="@id/profileImageView"
                 android:lineSpacingExtra="5sp"
                 android:textColor="#000000"
+                android:text="@{item.author.name}"
                 android:textSize="10.5sp"
                 tools:text="마이너" />
 
@@ -85,7 +86,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/writerTextView"
                 android:lineSpacingExtra="5sp"
-                android:text="@{item.timestampToString()}"
+                android:text="@{item.created}"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="10.5sp"
                 tools:text="2020.02.10" />

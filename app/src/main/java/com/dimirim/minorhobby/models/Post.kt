@@ -6,7 +6,7 @@ import com.google.firebase.firestore.DocumentId
 import java.text.SimpleDateFormat
 
 data class Post(
-    val authorId: String = "",
+    val author: String = "",
     val title: String = "",
     val content: String = "",
     val images: List<String> = listOf(),

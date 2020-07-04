@@ -8,7 +8,7 @@
 
         <import type="androidx.databinding.ObservableArrayList" />
 
-        <import type="com.dimirim.minorhobby.models.Post" />
+        <import type="com.dimirim.minorhobby.models.PopulatedPost" />
 
         <variable
             name="vm"
@@ -16,7 +16,7 @@
 
         <variable
             name="item"
-            type="ObservableArrayList&lt;Post&gt;" />
+            type="ObservableArrayList&lt;PopulatedPost&gt;" />
 
     </data>
 

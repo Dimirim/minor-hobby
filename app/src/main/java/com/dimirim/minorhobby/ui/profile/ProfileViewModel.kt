@@ -5,18 +5,19 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimirim.minorhobby.models.Hobby
-import com.dimirim.minorhobby.models.Post
+import com.dimirim.minorhobby.models.PopulatedPost
 import com.dimirim.minorhobby.models.User
 import com.dimirim.minorhobby.repository.remote.HobbyRepository
 import com.dimirim.minorhobby.repository.remote.PostRepository
+import com.dimirim.minorhobby.repository.remote.PostRepository.populate
 import com.dimirim.minorhobby.repository.remote.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 class ProfileViewModel : ViewModel() {
     val id = FirebaseAuth.getInstance().currentUser?.uid
-    val myHobbyList: ObservableArrayList<Hobby> = ObservableArrayList<Hobby>()
-    val myPostList: ObservableArrayList<Post> = ObservableArrayList<Post>()
+    val myHobbyList: ObservableArrayList<Hobby> = ObservableArrayList()
+    val myPostList: ObservableArrayList<PopulatedPost> = ObservableArrayList()
     var user = ObservableField<User>()
 
     init {
@@ -33,8 +34,10 @@ class ProfileViewModel : ViewModel() {
     }
 
     suspend fun loadMyPost() {
+        val posts = PostRepository.getPostsByAuthor(id!!)
+        val populatedPosts = posts.map { it.populate() }
         myPostList.clear()
-        myPostList.addAll(PostRepository.getPostsByAuthor(id!!))
+        myPostList.addAll(populatedPosts)
     }
 
     suspend fun getUser(): User? {
