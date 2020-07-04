@@ -71,6 +71,7 @@
             android:layout_marginEnd="16dp">
 
             <EditText
+                android:id="@+id/searchEditText"
                 style="@style/BigMediumText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -85,6 +86,16 @@
                 android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent" />
+
+            <ImageButton
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/filter"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_baseline_search_24"/>
 
             <ImageButton
                 android:id="@+id/filter"
@@ -110,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            app:item="@{item}"
+            app:item="@{vm.postList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_post_large" />
 

@@ -25,11 +25,16 @@ object PostRepository {
             .get().await().toObjects(Post::class.java)
     }
 
-    suspend fun getPostsByTags(tagIds: List<String>, containsAll: Boolean = false): List<Post> {
+    suspend fun getPostsByTags(
+        hobbyId: String,
+        tagIds: List<String>,
+        containsAll: Boolean = false
+    ): List<Post> {
         return if (containsAll) {
-            getAllPosts().filter { it.tags.containsAll(tagIds) }
+            getPostsByHobby(hobbyId).filter { it.tags.containsAll(tagIds) }
         } else {
-            posts.whereArrayContainsAny("tags", tagIds)
+            posts.whereEqualTo("hobby", hobbyId).orderBy("created", Query.Direction.DESCENDING)
+                .whereArrayContainsAny("tags", tagIds)
                 .get().await().toObjects(Post::class.java)
         }
     }
@@ -42,6 +47,15 @@ object PostRepository {
 
     suspend fun getAllPosts(): List<Post> {
         return posts.orderBy("created", Query.Direction.DESCENDING)
+            .get().await().toObjects(Post::class.java)
+    }
+
+    suspend fun getPostBySearchText(hobbyId: String, searchText: String): List<Post> {
+        return posts.whereEqualTo("hobby", hobbyId)
+            .orderBy("title", Query.Direction.ASCENDING)
+            .orderBy("created", Query.Direction.DESCENDING)
+            .whereGreaterThanOrEqualTo("title", searchText)
+            .whereLessThanOrEqualTo("title", searchText)
             .get().await().toObjects(Post::class.java)
     }
 

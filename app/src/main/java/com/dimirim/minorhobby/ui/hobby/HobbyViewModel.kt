@@ -15,4 +15,14 @@ class HobbyViewModel : ViewModel() {
         postList.clear()
         postList.addAll(populatedPosts)
     }
+
+    suspend fun loadPostBySearchText(hobbyId: String, searchText: String) {
+        postList.clear()
+        postList.addAll(PostRepository.getPostBySearchText(hobbyId, searchText))
+    }
+
+    suspend fun loadPostByTags(hobbyId: String, tags: List<String>, containsAll: Boolean) {
+        postList.clear()
+        postList.addAll(PostRepository.getPostsByTags(hobbyId, tags, containsAll))
+    }
 }

@@ -2,13 +2,16 @@ package com.dimirim.minorhobby.ui.hobby
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.databinding.ActivityHobbyBinding
 import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
+import com.dimirim.minorhobby.models.Post
 import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
 import com.dimirim.minorhobby.ui.hobby_write.HobbyWriteActivity
 import kotlinx.android.synthetic.main.activity_hobby.*
@@ -26,7 +29,6 @@ class HobbyActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(HobbyViewModel::class.java)
         binding.vm = viewModel
-        binding.item = viewModel.postList
 
         hobbyId = intent.getStringExtra("hobbyId")
         hobbyNameTextView.text = intent.getStringExtra("hobbyName")
@@ -37,7 +39,10 @@ class HobbyActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
+            binding.item = viewModel.postList
+            val test: ObservableArrayList<Post> = viewModel.postList
             viewModel.loadPost(hobbyId)
+            Log.d("test", test.toString())
         }
 
         postAdapter = PostRecyclerAdapter(
@@ -51,6 +56,20 @@ class HobbyActivity : AppCompatActivity() {
         )
 
         postRecyclerView.adapter = postAdapter
+
+        search.setOnClickListener {
+            val searchText = searchEditText.text.toString()
+            if (searchText.isEmpty()) {
+                lifecycleScope.launch {
+                    viewModel.loadPost(hobbyId)
+                }
+            } else {
+
+                lifecycleScope.launch {
+                    viewModel.loadPostBySearchText(hobbyId, searchText)
+                }
+            }
+        }
 
         backBtn.setOnClickListener {
             finish()

@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
-        Log.d("test", "MainActivity Start")
-
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.vm = viewModel
 
