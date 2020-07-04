@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.tags.TagsActivity"></activity>
+        <activity android:name=".ui.post.PostActivity"></activity>
+        <activity android:name=".ui.tags.TagsActivity" />
         <activity
             android:name=".ui.profile_edit.ProfileEditActivity"
             android:windowSoftInputMode="adjustPan" />

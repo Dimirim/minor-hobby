@@ -1,6 +1,5 @@
 package com.dimirim.minorhobby.repository.remote
 
-import android.util.Log
 import com.dimirim.minorhobby.models.PopulatedPost
 import com.dimirim.minorhobby.models.Post
 import com.google.firebase.firestore.DocumentReference
@@ -59,7 +58,6 @@ object PostRepository {
                 searchPosts.add(post)
             }
         }
-        Log.d("test", searchPosts.toString())
         return searchPosts
     }
 

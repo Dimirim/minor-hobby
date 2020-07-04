@@ -8,6 +8,7 @@ import com.dimirim.minorhobby.repository.remote.PostRepository.populate
 
 class HobbyViewModel : ViewModel() {
     val postList: ObservableArrayList<PopulatedPost> = ObservableArrayList()
+    lateinit var post: PopulatedPost
 
     suspend fun loadPost(hobbyId: String) {
         val posts = PostRepository.getPostsByHobby(hobbyId)
