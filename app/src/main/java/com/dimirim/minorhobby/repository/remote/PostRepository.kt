@@ -76,6 +76,7 @@ object PostRepository {
 
     suspend fun Post.populate(): PopulatedPost {
         val author = UserRepository.getUserById(author)!!
+        val hobby = HobbyRepository.getHobbyById(hobby)!!
         return PopulatedPost(
             author,
             title,

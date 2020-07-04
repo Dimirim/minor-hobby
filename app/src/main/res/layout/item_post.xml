@@ -53,26 +53,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="6sp"
+                    android:text="@{item.hobby.name}"
                     android:textColor="@color/colorAccent"
                     android:textSize="10sp"
-                    tools:text="드론" />
-
-                <TextView
-                    style="@style/ContentText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:lineSpacingExtra="6sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="10sp"
-                    tools:text="|  " />
+                    tools:text="식물 키우기" />
 
                 <TextView
                     style="@style/ContentText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="6sp"
-                    android:text="@{item.author.name}"
+                    android:text="@{`  |  ` + item.author.name}"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="10sp"
                     tools:text="주선우" />

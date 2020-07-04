@@ -2,16 +2,13 @@ package com.dimirim.minorhobby.ui.hobby
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.databinding.ActivityHobbyBinding
 import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
-import com.dimirim.minorhobby.models.Post
 import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
 import com.dimirim.minorhobby.ui.hobby_write.HobbyWriteActivity
 import kotlinx.android.synthetic.main.activity_hobby.*
@@ -20,7 +17,7 @@ import kotlinx.coroutines.launch
 class HobbyActivity : AppCompatActivity() {
     private lateinit var viewModel: HobbyViewModel
     private lateinit var postAdapter: PostRecyclerAdapter<ItemPostLargeBinding>
-    var hobbyId = ""
+    private var hobbyId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +37,7 @@ class HobbyActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             binding.item = viewModel.postList
-            val test: ObservableArrayList<Post> = viewModel.postList
             viewModel.loadPost(hobbyId)
-            Log.d("test", test.toString())
         }
 
         postAdapter = PostRecyclerAdapter(

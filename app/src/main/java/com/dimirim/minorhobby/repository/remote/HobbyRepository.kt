@@ -1,5 +1,6 @@
 package com.dimirim.minorhobby.repository.remote
 
+import android.util.Log
 import com.dimirim.minorhobby.models.Hobby
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
@@ -14,6 +15,7 @@ object HobbyRepository {
     }
 
     suspend fun getHobbyById(id: String): Hobby? {
+        Log.d("testing", id)
         val hobby = hobbies.document(id).get().await()
             .toObject(Hobby::class.java) ?: return null
         hobby.population = UserRepository.getPopulationOfHobby(hobby.id)

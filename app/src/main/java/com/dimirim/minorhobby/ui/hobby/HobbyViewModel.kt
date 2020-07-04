@@ -17,12 +17,16 @@ class HobbyViewModel : ViewModel() {
     }
 
     suspend fun loadPostBySearchText(hobbyId: String, searchText: String) {
+        val posts = PostRepository.getPostBySearchText(hobbyId, searchText)
+        val populatedPosts = posts.map { it.populate() }
         postList.clear()
-        postList.addAll(PostRepository.getPostBySearchText(hobbyId, searchText))
+        postList.addAll(populatedPosts)
     }
 
     suspend fun loadPostByTags(hobbyId: String, tags: List<String>, containsAll: Boolean) {
+        val posts = PostRepository.getPostsByTags(hobbyId, tags, containsAll)
+        val populatedPosts = posts.map { it.populate() }
         postList.clear()
-        postList.addAll(PostRepository.getPostsByTags(hobbyId, tags, containsAll))
+        postList.addAll(populatedPosts)
     }
 }

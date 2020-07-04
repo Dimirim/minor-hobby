@@ -8,7 +8,7 @@ data class PopulatedPost(
     val content: String,
     val images: List<String>,
     val tags: List<String>,
-    val hobby: String,
+    val hobby: Hobby,
     var likes: Int,
     var views: Int,
     val created: String,
