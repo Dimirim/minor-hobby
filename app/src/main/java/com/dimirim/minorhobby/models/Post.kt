@@ -1,7 +1,9 @@
 package com.dimirim.minorhobby.models
 
+import android.annotation.SuppressLint
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentId
+import java.text.SimpleDateFormat
 
 data class Post(
     val author: String = "",
@@ -14,4 +16,10 @@ data class Post(
     var views: Int = 0,
     val created: Timestamp = Timestamp.now(),
     @DocumentId val id: String = ""
-)
+) {
+    @SuppressLint("SimpleDateFormat")
+    fun createdToString(): String {
+        val dateFormat = SimpleDateFormat("yyyy.MM.dd")
+        return dateFormat.format(created.toDate())
+    }
+}

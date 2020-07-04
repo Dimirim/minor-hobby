@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dimirim.minorhobby.databinding.ItemPostBinding
 import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
-import com.dimirim.minorhobby.models.Post
+import com.dimirim.minorhobby.models.PopulatedPost
 
 class PostRecyclerAdapter<T : ViewDataBinding>(
     private val onItemClickListener: OnItemClickListener,
     @LayoutRes private val layoutId: Int,
-    private var items: List<Post>
+    private var items: List<PopulatedPost>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    fun setItems(items: List<Post>) {
+    fun setItems(items: List<PopulatedPost>) {
         this.items = items
         notifyDataSetChanged() // TODO : Use [DiffUtil]
     }
@@ -52,7 +52,7 @@ class PostRecyclerAdapter<T : ViewDataBinding>(
     companion object {
         @BindingAdapter("bind:item")
         @JvmStatic
-        fun bindItem(recyclerView: RecyclerView, items: ObservableArrayList<Post>) {
+        fun bindItem(recyclerView: RecyclerView, items: ObservableArrayList<PopulatedPost>) {
             val adapter: PostRecyclerAdapter<ViewDataBinding> =
                 recyclerView.adapter as PostRecyclerAdapter<ViewDataBinding>
             adapter.setItems(items)
@@ -67,11 +67,10 @@ class PostViewHolder(
 
     private val context = binding.root.context
 
-    fun bind(position: Int, post: Post) {
+    fun bind(position: Int, post: PopulatedPost) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
         binding.item = post
-        binding.likesTextView.text = post.likes.toString()
-        binding.viewTextView.text = post.views.toString() + " views"
+
         if (post.images.isNotEmpty()) {
             Glide.with(context)
                 .load(post.images[0])
@@ -87,12 +86,13 @@ class PostLargeViewHolder(
 
     private val context = binding.root.context
 
-    fun bind(position: Int, post: Post) {
+    fun bind(position: Int, post: PopulatedPost) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
         binding.item = post
-        binding.favoriteTextView.text = post.likes.toString()
-        binding.dateTextView.text = post.created.toDate().toString()
-        binding.viewTextView.text = post.views.toString() + " views"
+
+        Glide.with(context)
+            .load(post.author.profile)
+            .into(binding.profileImageView)
 
         if (post.images.isNotEmpty()) {
             Glide.with(context)

@@ -5,10 +5,11 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimirim.minorhobby.models.Hobby
-import com.dimirim.minorhobby.models.Post
+import com.dimirim.minorhobby.models.PopulatedPost
 import com.dimirim.minorhobby.models.User
 import com.dimirim.minorhobby.repository.remote.HobbyRepository
 import com.dimirim.minorhobby.repository.remote.PostRepository
+import com.dimirim.minorhobby.repository.remote.PostRepository.populate
 import com.dimirim.minorhobby.repository.remote.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
     val id = FirebaseAuth.getInstance().currentUser?.uid
     val myHobbyList: ObservableArrayList<Hobby> = ObservableArrayList<Hobby>()
-    val postList: ObservableArrayList<Post> = ObservableArrayList<Post>()
+    val postList: ObservableArrayList<PopulatedPost> = ObservableArrayList()
     val bannerList: ArrayList<String> = ArrayList<String>()
     val user = ObservableField<User>()
 
@@ -34,8 +35,10 @@ class MainViewModel : ViewModel() {
     }
 
     suspend fun loadPost() {
+        val posts = PostRepository.getAllPosts()
+        val populatedPosts = posts.map { it.populate() }
         postList.clear()
-        postList.addAll(PostRepository.getAllPosts())
+        postList.addAll(populatedPosts)
     }
 
     suspend fun loadBanner(): ArrayList<String> {

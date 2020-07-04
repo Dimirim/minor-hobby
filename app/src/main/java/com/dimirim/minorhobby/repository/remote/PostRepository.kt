@@ -1,6 +1,6 @@
 package com.dimirim.minorhobby.repository.remote
 
-import android.util.Log
+import com.dimirim.minorhobby.models.PopulatedPost
 import com.dimirim.minorhobby.models.Post
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.Query
@@ -20,7 +20,6 @@ object PostRepository {
     }
 
     suspend fun getPostsByHobby(hobbyId: String): List<Post> {
-        Log.d("test", "getPostsByHobby")
         return posts.whereEqualTo("hobby", hobbyId)
             .orderBy("created", Query.Direction.DESCENDING)
             .get().await().toObjects(Post::class.java)
@@ -59,5 +58,21 @@ object PostRepository {
     suspend fun Post.update(field: String, value: Any): Post {
         posts.document(this.id).update(field, value)
         return getPostById(this.id)!!
+    }
+
+    suspend fun Post.populate(): PopulatedPost {
+        val author = UserRepository.getUserById(author)!!
+        return PopulatedPost(
+            author,
+            title,
+            content,
+            images,
+            tags,
+            hobby,
+            likes,
+            views,
+            createdToString(),
+            id
+        )
     }
 }

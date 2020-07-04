@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.dimirim.minorhobby.models.Post" />
+            type="com.dimirim.minorhobby.models.PopulatedPost" />
 
     </data>
 
@@ -72,6 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="6sp"
+                    android:text="@{item.author.name}"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="10sp"
                     tools:text="주선우" />
@@ -85,9 +86,9 @@
                 android:layout_below="@+id/tag_layout"
                 android:layout_marginTop="5dp"
                 android:lineSpacingExtra="0sp"
+                android:text="@{item.title}"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                android:text="@{item.title}"
                 tools:text="DJI 드론 중고\n판매합니다_택포 10" />
 
             <LinearLayout
@@ -110,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:lineSpacingExtra="6sp"
+                    android:text="@{String.valueOf(item.likes)}"
                     android:textColor="@color/colorAccent"
                     android:textSize="12sp"
                     tools:text="363" />
@@ -121,6 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:lineSpacingExtra="6sp"
+                    android:text="@{item.views + ` views`}"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp"
                     tools:text="2,363 view" />

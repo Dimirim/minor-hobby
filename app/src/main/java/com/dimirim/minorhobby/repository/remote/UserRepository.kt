@@ -1,5 +1,6 @@
 package com.dimirim.minorhobby.repository.remote
 
+import android.util.Log
 import com.dimirim.minorhobby.models.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -13,6 +14,7 @@ object UserRepository {
     }
 
     suspend fun getUserById(id: String): User? {
+        Log.d("testing", id)
         return users.document(id).get().await().toObject(User::class.java)
     }
 
