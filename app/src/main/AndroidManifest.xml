@@ -33,7 +33,9 @@
         <activity android:name=".ui.hobby_write.HobbyWriteActivity" />
         <activity android:name=".ui.hobby_request.HobbyRequestActivity" />
         <activity android:name=".ui.hobby_detail.HobbyDetailActivity" />
-        <activity android:name=".ui.hobby.HobbyActivity" />
+        <activity
+            android:name=".ui.hobby.HobbyActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity
             android:name=".ui.register.RegisterDetailActivity"
