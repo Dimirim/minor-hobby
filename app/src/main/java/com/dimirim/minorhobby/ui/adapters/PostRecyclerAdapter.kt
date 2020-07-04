@@ -90,9 +90,6 @@ class PostLargeViewHolder(
     fun bind(position: Int, post: Post) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
         binding.item = post
-        binding.favoriteTextView.text = post.likes.toString()
-        binding.dateTextView.text = post.created.toDate().toString()
-        binding.viewTextView.text = post.views.toString() + " views"
 
         if (post.images.isNotEmpty()) {
             Glide.with(context)
