@@ -50,13 +50,15 @@ object PostRepository {
             .get().await().toObjects(Post::class.java)
     }
 
-    suspend fun getPostBySearchText(hobbyId: String, searchText: String): List<Post> {
-        return posts.whereEqualTo("hobby", hobbyId)
-            .orderBy("title", Query.Direction.ASCENDING)
-            .orderBy("created", Query.Direction.DESCENDING)
-            .whereGreaterThanOrEqualTo("title", searchText)
-            .whereLessThanOrEqualTo("title", searchText)
-            .get().await().toObjects(Post::class.java)
+    suspend fun getPostBySearchText(hobbyId: String, searchText: String): MutableList<Post> {
+        val basicPosts: MutableList<Post> = getPostsByHobby(hobbyId).toMutableList()
+        val searchPosts: MutableList<Post> = mutableListOf<Post>()
+        for (post in basicPosts) {
+            if (post.title.contains(searchText, true)) {
+                searchPosts.add(post)
+            }
+        }
+        return searchPosts
     }
 
     suspend fun Post.addLike() {

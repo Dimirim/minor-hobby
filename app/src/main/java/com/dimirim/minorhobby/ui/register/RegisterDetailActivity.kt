@@ -11,7 +11,9 @@ import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.models.User
 import com.dimirim.minorhobby.repository.remote.UserRepository
 import com.dimirim.minorhobby.ui.main.MainActivity
+import kotlinx.android.synthetic.main.activity_profile_edit.*
 import kotlinx.android.synthetic.main.activity_register_detail.*
+import kotlinx.android.synthetic.main.activity_register_detail.backBtn
 import kotlinx.coroutines.launch
 
 
@@ -57,10 +59,13 @@ class RegisterDetailActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() =
-        if (cupertinoEditText.text.isBlank() || planets_spinner.selectedItem.toString()
+        if (userNameEditText.text.isBlank() || planets_spinner.selectedItem.toString()
                 .equals("선택")
         ) {
             Toast.makeText(this, R.string.info_wrong_register, Toast.LENGTH_LONG).show()
+            false
+        } else if (userNameEditText.text.length > 10) {
+            Toast.makeText(this, "사용자 이름은 10글자 이하로 작성해주세요", Toast.LENGTH_LONG).show()
             false
         } else {
             true

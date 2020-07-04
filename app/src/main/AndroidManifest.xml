@@ -15,6 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.post.PostActivity"></activity>
+        <activity android:name=".ui.tags.TagsActivity" />
         <activity
             android:name=".ui.profile_edit.ProfileEditActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -22,18 +24,22 @@
         <activity
             android:name=".ui.setting.SettingActivity"
             android:theme="@style/PreferenceScreen">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.hobby_write.HobbyWriteActivity" />
         <activity android:name=".ui.hobby_request.HobbyRequestActivity" />
         <activity android:name=".ui.hobby_detail.HobbyDetailActivity" />
-        <activity android:name=".ui.hobby.HobbyActivity" />
+        <activity
+            android:name=".ui.hobby.HobbyActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity
             android:name=".ui.register.RegisterDetailActivity"
@@ -44,6 +50,7 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
