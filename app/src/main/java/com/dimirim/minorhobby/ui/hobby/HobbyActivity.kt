@@ -12,7 +12,6 @@ import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
 import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
 import com.dimirim.minorhobby.ui.hobby_write.HobbyWriteActivity
 import com.dimirim.minorhobby.ui.post.PostActivity
-import com.dimirim.minorhobby.ui.tags.TagsActivity
 import kotlinx.android.synthetic.main.activity_hobby.*
 import kotlinx.coroutines.launch
 
@@ -68,12 +67,6 @@ class HobbyActivity : AppCompatActivity() {
                     viewModel.loadPostBySearchText(hobbyId, searchText)
                 }
             }
-        }
-
-        filter.setOnClickListener {
-            val intent = Intent(this@HobbyActivity, TagsActivity::class.java)
-            intent.putExtra("hobbyId", hobbyId)
-            startActivityForResult(intent, 0)
         }
 
         backBtn.setOnClickListener {
