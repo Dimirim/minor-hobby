@@ -13,12 +13,13 @@ import kotlinx.coroutines.launch
 
 class HobbyViewModel : ViewModel() {
     val postList: ObservableArrayList<PopulatedPost> = ObservableArrayList()
-    var filterTags: List<ToggleTag> = listOf()
+    var allTags: List<ToggleTag> = listOf()
+    var containsAll = false
     lateinit var post: PopulatedPost
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            filterTags = TagRepository.getAllTags().map { ToggleTag(it) }
+            allTags = TagRepository.getAllTags().map { ToggleTag(it) }
         }
     }
 
@@ -31,15 +32,27 @@ class HobbyViewModel : ViewModel() {
 
     suspend fun loadPostBySearchText(hobbyId: String, searchText: String) {
         val posts = PostRepository.getPostBySearchText(hobbyId, searchText)
-        val populatedPosts = posts.map { it.populate() }
+        var populatedPosts = posts
+            .map { it.populate() }
+        val filterTags = allTags.filter { it.isEnabled.value!! }.map { it.tag.id }
+        if (filterTags.isNotEmpty()) {
+            populatedPosts = posts
+                .map { it.populate() }
+                .filter { post ->
+                    if (containsAll) post.tags.containsAll(filterTags)
+                    else {
+                        filterTags.forEach {
+                            if (post.tags.contains(it)) return@filter true
+                        }
+                        false
+                    }
+                }
+        }
         postList.clear()
         postList.addAll(populatedPosts)
     }
 
-    suspend fun loadPostByTags(hobbyId: String, tags: List<String>, containsAll: Boolean) {
-        val posts = PostRepository.getPostsByTags(hobbyId, tags, containsAll)
-        val populatedPosts = posts.map { it.populate() }
-        postList.clear()
-        postList.addAll(populatedPosts)
+    fun updateFilter(containsAll: Boolean) {
+        this.containsAll = containsAll
     }
 }

@@ -93,17 +93,18 @@ class HobbyActivity : AppCompatActivity() {
             .setNegativeButton(R.string.cancel) { _, _ -> }
             .setPositiveButton(R.string.apply) { _, _ ->
                 lifecycleScope.launch {
-                    viewModel.loadPostByTags(
-                        hobbyId,
-                        viewModel.filterTags.filter { it.isEnabled.value!! }.map { it.tag.id },
-                        view.containsAllSwitch.isEnabled
+                    viewModel.updateFilter(
+                        view.containsAllSwitch.isChecked
                     )
+                    viewModel.loadPostBySearchText(hobbyId, searchEditText.text.toString())
                 }
             }
             .show()
 
+        view.containsAllSwitch.isChecked = viewModel.containsAll
+
         Slush.SingleType<ToggleTag>()
-            .setItems(viewModel.filterTags)
+            .setItems(viewModel.allTags)
             .setItemLayout(R.layout.item_toggle_tag)
             .setLayoutManager(FlexboxLayoutManager(this))
             .onBindData<ItemToggleTagBinding> { binding, toggleTag ->
@@ -111,8 +112,11 @@ class HobbyActivity : AppCompatActivity() {
                 binding.item = toggleTag
             }
             .onItemClick { view, i ->
-                val isEnabled = viewModel.filterTags[i].isEnabled
+                val isEnabled = viewModel.allTags[i].isEnabled
                 isEnabled.value = !isEnabled.value!!
+                lifecycleScope.launch {
+                    viewModel.loadPostBySearchText(hobbyId, searchEditText.text.toString())
+                }
             }
             .into(view.tagRecyclerView)
     }
