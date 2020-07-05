@@ -9,6 +9,7 @@ import androidx.databinding.ObservableArrayList
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.databinding.ItemPostBinding
 import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
 import com.dimirim.minorhobby.models.PopulatedPost
@@ -53,6 +54,7 @@ class PostRecyclerAdapter<T : ViewDataBinding>(
         @BindingAdapter("bind:item")
         @JvmStatic
         fun bindItem(recyclerView: RecyclerView, items: ObservableArrayList<PopulatedPost>) {
+            @Suppress("UNCHECKED_CAST")
             val adapter: PostRecyclerAdapter<ViewDataBinding> =
                 recyclerView.adapter as PostRecyclerAdapter<ViewDataBinding>
             adapter.setItems(items)
@@ -70,6 +72,8 @@ class PostViewHolder(
     fun bind(position: Int, post: PopulatedPost) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
         binding.item = post
+
+        Glide.with(context).load(R.drawable.default_image).into(binding.thumbnailImageView)
 
         if (post.images.isNotEmpty()) {
             Glide.with(context)
@@ -89,6 +93,9 @@ class PostLargeViewHolder(
     fun bind(position: Int, post: PopulatedPost) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
         binding.item = post
+
+        Glide.with(context).load(R.drawable.default_image).into(binding.profileImageView)
+        Glide.with(context).load(R.drawable.default_image).into(binding.thumbnailImageView)
 
         Glide.with(context)
             .load(post.author.profile)
