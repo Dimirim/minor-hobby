@@ -1,6 +1,7 @@
 package com.dimirim.minorhobby.ui.hobby_write
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -17,6 +18,7 @@ class HobbyWriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HobbyWriteViewModel::class.java)
         viewModel.hobbyId = intent.getStringExtra("hobbyId")
+
         val binding = DataBindingUtil
             .setContentView<ActivityHobbyWriteBinding>(this, R.layout.activity_hobby_write)
         binding.lifecycleOwner = this
@@ -24,6 +26,7 @@ class HobbyWriteActivity : AppCompatActivity() {
 
         viewModel.appliedTags.observe(this, Observer {
             it.forEach { tag ->
+                Log.d("HobbyWriteActivity", "Tag: $tag")
                 val view = DataBindingUtil.inflate<ItemTagBinding>(
                     layoutInflater, R.layout.item_tag, tagsLayout, false)
                 view.item = tag

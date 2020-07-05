@@ -20,11 +20,9 @@ class HobbyWriteViewModel : ViewModel() {
     val content = MutableLiveData("")
     val appliedTags = MutableLiveData(listOf<Tag>())
 
-    private lateinit var tags: List<Tag>
-
     init {
         viewModelScope.launch {
-            tags = TagRepository.getAllTags()
+            appliedTags.value = TagRepository.getAllTags()
         }
     }
 
