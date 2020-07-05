@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="tag"
+            name="item"
             type="com.dimirim.minorhobby.models.Tag" />
     </data>
 
@@ -13,11 +13,12 @@
         android:id="@+id/tagText"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/shape_round"
         android:gravity="center"
         android:lineSpacingExtra="6.5sp"
         android:paddingHorizontal="16dp"
-        android:text="@{tag.name}"
+        android:text="@{`#` + item.name}"
         android:textColor="@color/colorAccent"
         android:textSize="12sp"
         tools:text="중고거래" />

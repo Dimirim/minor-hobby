@@ -26,7 +26,7 @@ class HobbyWriteActivity : AppCompatActivity() {
             it.forEach { tag ->
                 val view = DataBindingUtil.inflate<ItemTagBinding>(
                     layoutInflater, R.layout.item_tag, tagsLayout, false)
-                view.tag = tag
+                view.item = tag
                 tagsLayout.addView(view.root)
             }
         })

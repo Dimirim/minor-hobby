@@ -100,12 +100,6 @@ class PostLargeViewHolder(
                 .into(binding.thumbnailImageView)
         }
 
-        if (post.images.isNotEmpty()) {
-            Glide.with(context)
-                .load(post.images[0])
-                .into(binding.thumbnailImageView)
-        }
-
     }
 }
 
