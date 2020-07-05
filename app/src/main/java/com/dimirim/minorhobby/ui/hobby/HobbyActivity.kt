@@ -64,15 +64,8 @@ class HobbyActivity : AppCompatActivity() {
 
         search.setOnClickListener {
             val searchText = searchEditText.text.toString()
-            if (searchText.isEmpty()) {
-                lifecycleScope.launch {
-                    viewModel.loadPost(hobbyId)
-                }
-            } else {
-
-                lifecycleScope.launch {
-                    viewModel.loadPostBySearchText(hobbyId, searchText)
-                }
+            lifecycleScope.launch {
+                viewModel.loadPostBySearchText(hobbyId, searchText)
             }
         }
 
