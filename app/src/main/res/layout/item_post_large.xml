@@ -100,7 +100,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/favoriteImageView"
+                    android:id="@+id/favorite"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:src="@drawable/ic_favorite_24px" />

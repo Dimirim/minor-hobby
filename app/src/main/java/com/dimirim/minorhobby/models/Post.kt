@@ -14,6 +14,8 @@ data class Post(
     val hobby: String = "",
     var likes: Int = 0,
     var views: Int = 0,
+    var likeUsers: List<String> = listOf(),
+    var viewUsers: List<String> = listOf(),
     val created: Timestamp = Timestamp.now(),
     @DocumentId val id: String = ""
 ) {

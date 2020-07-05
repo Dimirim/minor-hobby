@@ -61,16 +61,6 @@ object PostRepository {
         return searchPosts
     }
 
-    suspend fun Post.addLike() {
-        posts.document(this.id).update("likes", this.likes + 1).await()
-        this.likes++
-    }
-
-    suspend fun Post.addView() {
-        posts.document(this.id).update("views", this.likes + 1).await()
-        this.views++
-    }
-
     suspend fun Post.update(field: String, value: Any): Post {
         posts.document(this.id).update(field, value)
         return getPostById(this.id)!!
@@ -88,6 +78,8 @@ object PostRepository {
             hobby,
             likes,
             views,
+            likeUsers,
+            viewUsers,
             createdToString(),
             id
         )

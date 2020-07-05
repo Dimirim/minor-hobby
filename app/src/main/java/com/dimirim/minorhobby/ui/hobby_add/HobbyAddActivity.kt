@@ -48,5 +48,9 @@ class HobbyAddActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.loadHobbies()
         }
+
+        backBtn.setOnClickListener {
+            finish()
+        }
     }
 }

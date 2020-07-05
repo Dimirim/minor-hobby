@@ -1,11 +1,9 @@
 package com.dimirim.minorhobby.ui.post
 
 import android.os.Bundle
-import android.util.Log
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -47,8 +45,29 @@ class PostActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.loadTag()
             viewModel.loadImage()
+            viewModel.updateViews()
+            if (viewModel.isLike()) {
+                favorite.setImageResource(R.drawable.ic_favorite_border_24px)
+            } else {
+                favorite.setImageResource(R.drawable.ic_favorite_24px)
+            }
             Glide.with(this@PostActivity)
                 .load(viewModel.getPost(postId)?.populate()!!.author.profile).into(profileImageView)
+        }
+
+        favorite.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.updateLikes()
+                if (viewModel.isLike()) {
+                    favorite.setImageResource(R.drawable.ic_favorite_border_24px)
+                } else {
+                    favorite.setImageResource(R.drawable.ic_favorite_24px)
+                }
+
+                Toast.makeText(this@PostActivity, "좋아요!", Toast.LENGTH_LONG).show()
+
+                likesTextView.text = viewModel.post.value!!.likes.toString()
+            }
         }
 
         tagAdapter = TagRecyclerAdapter(

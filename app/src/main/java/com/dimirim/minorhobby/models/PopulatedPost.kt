@@ -11,6 +11,8 @@ data class PopulatedPost(
     val hobby: Hobby,
     var likes: Int,
     var views: Int,
+    var likeUsers: List<String>,
+    var viewUsers: List<String>,
     val created: String,
     @DocumentId val id: String
 )
