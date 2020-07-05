@@ -63,6 +63,8 @@
             android:id="@+id/tagsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             app:flexWrap="wrap"
@@ -90,16 +92,12 @@
             android:layout_marginTop="13dp"
             android:background="@color/colorPrimaryDarkLight" />
 
-        <EditText
+        <jp.wasabeef.richeditor.RichEditor
+            android:id="@+id/richEditor"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/white"
-            android:hint="내용을 입력하세요"
-            android:padding="16dp"
-            android:text="@={vm.content}"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDarkLight" />
+            android:background="@android:color/white" />
 
         <View
             android:layout_width="match_parent"
@@ -138,6 +136,45 @@
                 android:layout_weight="1"
                 android:background="@color/colorTransparent"
                 android:src="@drawable/ic_format_italic_24px" />
+
+            <ImageView
+                android:id="@+id/h1Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:background="@color/colorTransparent"
+                android:tint="#707070"
+                android:src="@drawable/h1" />
+
+            <ImageView
+                android:id="@+id/h2Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:background="@color/colorTransparent"
+                android:tint="#707070"
+                android:src="@drawable/h2" />
+
+            <ImageView
+                android:id="@+id/h3Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:background="@color/colorTransparent"
+                android:tint="#707070"
+                android:src="@drawable/h3" />
+            <ImageView
+                android:id="@+id/undoBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:background="@color/colorTransparent"
+                android:tint="#707070"
+                android:src="@drawable/ic_baseline_undo_24" />
 
         </LinearLayout>
 

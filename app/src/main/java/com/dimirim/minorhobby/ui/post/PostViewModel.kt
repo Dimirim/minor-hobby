@@ -2,6 +2,7 @@ package com.dimirim.minorhobby.ui.post
 
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimirim.minorhobby.models.PopulatedPost
@@ -16,11 +17,11 @@ class PostViewModel(private val postId: String) : ViewModel() {
 
     val tagList: ObservableArrayList<Tag> = ObservableArrayList<Tag>()
     val imageList: ObservableArrayList<String> = ObservableArrayList<String>()
-    val post = ObservableField<PopulatedPost>()
+    val post = MutableLiveData<PopulatedPost>()
 
     init {
         viewModelScope.launch {
-            post.set(getPost(postId)!!.populate())
+            post.value = (getPost(postId)!!.populate())
         }
     }
 

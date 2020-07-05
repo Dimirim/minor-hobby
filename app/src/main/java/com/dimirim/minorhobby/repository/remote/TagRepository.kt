@@ -1,5 +1,6 @@
 package com.dimirim.minorhobby.repository.remote
 
+import android.util.Log
 import com.dimirim.minorhobby.models.Tag
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore

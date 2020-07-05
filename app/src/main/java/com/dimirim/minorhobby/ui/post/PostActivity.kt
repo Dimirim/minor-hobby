@@ -1,8 +1,14 @@
 package com.dimirim.minorhobby.ui.post
 
 import android.os.Bundle
+import android.util.Log
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -30,6 +36,7 @@ class PostActivity : AppCompatActivity() {
 
         val binding: ActivityPostBinding =
             DataBindingUtil.setContentView<ActivityPostBinding>(this, R.layout.activity_post)
+        binding.lifecycleOwner = this
 
         postId = intent.getStringExtra("postId")
 
@@ -62,9 +69,22 @@ class PostActivity : AppCompatActivity() {
             viewModel.imageList
         )
 
-        tagRecyclerView.adapter = tagAdapter
-        imageRecyclerView.adapter = imageAdapter
+        webView.apply {
+            webChromeClient = WebChromeClient()
 
+            settings.useWideViewPort = true
+            settings.loadWithOverviewMode = true
+            settings.setSupportZoom(true)
+            settings.defaultFixedFontSize = 40
+            settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        }
+
+        tagRecyclerView.adapter = tagAdapter
+        //imageRecyclerView.adapter = imageAdapter
+
+        viewModel.post.observe( this, Observer {
+            webView.loadData(it.content, "text/html","utf-8")
+        })
 
         backBtn.setOnClickListener {
             finish()
