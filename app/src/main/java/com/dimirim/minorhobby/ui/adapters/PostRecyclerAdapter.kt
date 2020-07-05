@@ -13,6 +13,7 @@ import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.databinding.ItemPostBinding
 import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
 import com.dimirim.minorhobby.models.PopulatedPost
+import com.google.firebase.auth.FirebaseAuth
 
 class PostRecyclerAdapter<T : ViewDataBinding>(
     private val onItemClickListener: OnItemClickListener,
@@ -67,11 +68,18 @@ class PostViewHolder(
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
+    val id = FirebaseAuth.getInstance().currentUser?.uid.toString()
     private val context = binding.root.context
 
     fun bind(position: Int, post: PopulatedPost) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
         binding.item = post
+
+        if (isLike(post)) {
+            binding.favorite.setImageResource(R.drawable.ic_favorite_border_24px)
+        } else {
+            binding.favorite.setImageResource(R.drawable.ic_favorite_24px)
+        }
 
         Glide.with(context).load(R.drawable.default_image).into(binding.thumbnailImageView)
 
@@ -80,6 +88,20 @@ class PostViewHolder(
                 .load(post.images[0])
                 .into(binding.thumbnailImageView)
         }
+
+
+    }
+
+    fun isLike(post: PopulatedPost): Boolean {
+        var chk = true
+
+        for (user in post.likeUsers) {
+            if (user == id) {
+                chk = false
+            }
+        }
+
+        return chk
     }
 }
 
@@ -88,11 +110,18 @@ class PostLargeViewHolder(
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
+    val id = FirebaseAuth.getInstance().currentUser?.uid.toString()
     private val context = binding.root.context
 
     fun bind(position: Int, post: PopulatedPost) {
         binding.root.setOnClickListener { onItemClickListener.onItemClick(position) }
         binding.item = post
+
+        if (isLike(post)) {
+            binding.favorite.setImageResource(R.drawable.ic_favorite_border_24px)
+        } else {
+            binding.favorite.setImageResource(R.drawable.ic_favorite_24px)
+        }
 
         Glide.with(context).load(R.drawable.default_image).into(binding.profileImageView)
         Glide.with(context).load(R.drawable.default_image).into(binding.thumbnailImageView)
@@ -107,6 +136,18 @@ class PostLargeViewHolder(
                 .into(binding.thumbnailImageView)
         }
 
+    }
+
+    fun isLike(post: PopulatedPost): Boolean {
+        var chk = true
+
+        for (user in post.likeUsers) {
+            if (user == id) {
+                chk = false
+            }
+        }
+
+        return chk
     }
 }
 

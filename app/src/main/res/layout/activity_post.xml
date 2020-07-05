@@ -129,9 +129,10 @@
                             android:id="@+id/favorite"
                             android:layout_width="12dp"
                             android:layout_height="12dp"
-                            android:src="@drawable/ic_favorite_24px" />
+                            android:src="@drawable/ic_favorite_border_24px" />
 
                         <TextView
+                            android:id="@+id/likesTextView"
                             style="@style/BigMediumText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

@@ -59,12 +59,12 @@ class RegisterDetailActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() =
-        if (userNameEditText.text.isBlank() || planets_spinner.selectedItem.toString()
+        if (cupertinoEditText.text.isBlank() || planets_spinner.selectedItem.toString()
                 .equals("선택")
         ) {
             Toast.makeText(this, R.string.info_wrong_register, Toast.LENGTH_LONG).show()
             false
-        } else if (userNameEditText.text.length > 10) {
+        } else if (cupertinoEditText.text.length > 10) {
             Toast.makeText(this, "사용자 이름은 10글자 이하로 작성해주세요", Toast.LENGTH_LONG).show()
             false
         } else {

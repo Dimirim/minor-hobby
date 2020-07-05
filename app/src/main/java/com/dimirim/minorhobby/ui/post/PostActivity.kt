@@ -1,6 +1,7 @@
 package com.dimirim.minorhobby.ui.post
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import com.dimirim.minorhobby.repository.remote.PostRepository.populate
 import com.dimirim.minorhobby.ui.adapters.ImageRecyclerAdapter
 import com.dimirim.minorhobby.ui.adapters.OnItemClickListener
 import com.dimirim.minorhobby.ui.adapters.TagRecyclerAdapter
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_post.*
 import kotlinx.coroutines.launch
 
@@ -40,8 +42,29 @@ class PostActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.loadTag()
             viewModel.loadImage()
+            viewModel.updateViews()
+            if (viewModel.isLike()) {
+                favorite.setImageResource(R.drawable.ic_favorite_border_24px)
+            } else {
+                favorite.setImageResource(R.drawable.ic_favorite_24px)
+            }
             Glide.with(this@PostActivity)
                 .load(viewModel.getPost(postId)?.populate()!!.author.profile).into(profileImageView)
+        }
+
+        favorite.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.updateLikes()
+                if (viewModel.isLike()) {
+                    favorite.setImageResource(R.drawable.ic_favorite_border_24px)
+                } else {
+                    favorite.setImageResource(R.drawable.ic_favorite_24px)
+                }
+
+                Toast.makeText(this@PostActivity, "좋아요!", Toast.LENGTH_LONG).show()
+
+                likesTextView.text = viewModel.post.get()!!.likes.toString()
+            }
         }
 
         tagAdapter = TagRecyclerAdapter(
