@@ -9,6 +9,7 @@
         <variable
             name="vm"
             type="com.dimirim.minorhobby.ui.profile.ProfileViewModel" />
+
     </data>
 
     <androidx.core.widget.NestedScrollView
