@@ -18,6 +18,7 @@ import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
 import com.dimirim.minorhobby.ui.hobby.HobbyActivity
 import com.dimirim.minorhobby.ui.main.banner.BannerFragment
 import com.dimirim.minorhobby.ui.main.banner.ViewPagerAdapter
+import com.dimirim.minorhobby.ui.post.PostActivity
 import com.dimirim.minorhobby.ui.profile.ProfileActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.launch
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         hobbyAdapter = HobbyRecyclerAdapter(
             object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    var intent = Intent(this@MainActivity, HobbyActivity::class.java)
+                    val intent = Intent(this@MainActivity, HobbyActivity::class.java)
                     intent.putExtra("hobbyName", viewModel.myHobbyList[position].name)
                     intent.putExtra("hobbyId", viewModel.myHobbyList[position].id)
                     startActivityForResult(intent, 0)
@@ -69,7 +70,9 @@ class MainActivity : AppCompatActivity() {
         postAdapter = PostRecyclerAdapter(
             object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
-
+                    val intent = Intent(this@MainActivity, PostActivity::class.java)
+                    intent.putExtra("postId", viewModel.postList[position].id)
+                    startActivityForResult(intent, 0)
                 }
             },
             R.layout.item_post,
