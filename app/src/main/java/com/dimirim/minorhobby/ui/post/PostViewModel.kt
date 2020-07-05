@@ -41,27 +41,27 @@ class PostViewModel(private val postId: String) : ViewModel() {
     }
 
     suspend fun isLike(): Boolean {
-        post.set(getPost(postId)!!.populate())
+        post.value = (getPost(postId)!!.populate())
 
         var chk = true
 
-        for (user in post.get()!!.likeUsers) {
+        for (user in post.value!!.likeUsers) {
             if (user == id) {
                 chk = false
             }
         }
 
-        post.set(getPost(postId)!!.populate())
+        post.value = (getPost(postId)!!.populate())
 
         return chk
     }
 
     suspend fun updateLikes() {
-        post.set(getPost(postId)!!.populate())
+        post.value = (getPost(postId)!!.populate())
 
-        var likes = post.get()!!.likes
+        var likes = post.value!!.likes
 
-        val updateView: MutableList<String> = post.get()!!.viewUsers.toMutableList()
+        val updateView: MutableList<String> = post.value!!.viewUsers.toMutableList()
 
         if (!isLike()) {
             getPost(postId)!!.update("likes", --likes)
@@ -70,32 +70,32 @@ class PostViewModel(private val postId: String) : ViewModel() {
             Log.d("removeTest", updateView.toList().toString())
             getPost(postId)!!.update("likeUsers", updateView.toList())
 
-            post.set(getPost(postId)!!.populate())
+            post.value = (getPost(postId)!!.populate())
         } else {
             getPost(postId)!!.update("likes", ++likes)
 
             updateView.add(id)
             getPost(postId)!!.update("likeUsers", updateView.toList())
 
-            post.set(getPost(postId)!!.populate())
+            post.value = (getPost(postId)!!.populate())
         }
     }
 
     suspend fun updateViews() {
-        post.set(getPost(postId)!!.populate())
+        post.value = (getPost(postId)!!.populate())
 
-        var views = post.get()!!.views
+        var views = post.value!!.views
         getPost(postId)!!.update("views", ++views)
 
         var chk = true
-        for (user in post.get()!!.viewUsers) {
+        for (user in post.value!!.viewUsers) {
             if (user == id) {
                 chk = false
                 return
             }
         }
         if (chk) {
-            val updateView: MutableList<String> = post.get()!!.viewUsers.toMutableList()
+            val updateView: MutableList<String> = post.value!!.viewUsers.toMutableList()
             updateView.add(id)
             getPost(postId)!!.update("viewUsers", updateView.toList())
         }
