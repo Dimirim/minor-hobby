@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.dimirim.minorhobby.models.ToggleTag" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:background="@drawable/shape_round"
+            android:gravity="center"
+            android:lineSpacingExtra="6.5sp"
+            android:paddingHorizontal="16dp"
+            android:text="@{`#` + item.tag.name}"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp"
+            android:visibility="@{item.isEnabled ? View.VISIBLE : View.INVISIBLE}"
+            tools:text="#중고거래" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:background="@drawable/shape_round_gray"
+            android:gravity="center"
+            android:lineSpacingExtra="6.5sp"
+            android:paddingHorizontal="16dp"
+            android:text="@{`#` + item.tag.name}"
+            android:textColor="@color/colorGray"
+            android:textSize="12sp"
+            android:visibility="@{!item.isEnabled ? View.VISIBLE : View.INVISIBLE}"
+            tools:text="#중고거래" />
+    </FrameLayout>
+</layout>
