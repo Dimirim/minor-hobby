@@ -137,29 +137,44 @@
                 android:background="@color/colorTransparent"
                 android:src="@drawable/ic_format_italic_24px" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/h1Btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:padding="8dp"
                 android:background="@color/colorTransparent"
-                android:src="@drawable/ic_format_italic_24px" />
+                android:tint="#707070"
+                android:src="@drawable/h1" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/h2Btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:padding="8dp"
                 android:background="@color/colorTransparent"
-                android:src="@drawable/ic_format_italic_24px" />
+                android:tint="#707070"
+                android:src="@drawable/h2" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/h3Btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:padding="8dp"
                 android:background="@color/colorTransparent"
-                android:src="@drawable/ic_format_italic_24px" />
+                android:tint="#707070"
+                android:src="@drawable/h3" />
+            <ImageView
+                android:id="@+id/undoBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:background="@color/colorTransparent"
+                android:tint="#707070"
+                android:src="@drawable/ic_baseline_undo_24" />
 
         </LinearLayout>
 

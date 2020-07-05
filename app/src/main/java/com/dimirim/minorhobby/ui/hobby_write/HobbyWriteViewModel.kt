@@ -18,11 +18,14 @@ class HobbyWriteViewModel : ViewModel() {
     var hobbyId = ""
     val title = MutableLiveData("")
     val content = MutableLiveData("")
-    val appliedTags = MutableLiveData(listOf<Tag>())
+
+    val appliedTags = ArrayList<Tag>()
+    val images = ArrayList<String>()
+    val selectAbleTags = MutableLiveData(listOf<Tag>())
 
     init {
         viewModelScope.launch {
-            appliedTags.value = TagRepository.getAllTags()
+            selectAbleTags.value = TagRepository.getAllTags()
         }
     }
 
@@ -32,8 +35,8 @@ class HobbyWriteViewModel : ViewModel() {
             FirebaseAuth.getInstance().currentUser!!.uid,
             title.value!!,
             content.value!!,
-            listOf(),
-            listOf(),
+            images,
+            appliedTags.map { it.name },
             hobbyId
         )
 
