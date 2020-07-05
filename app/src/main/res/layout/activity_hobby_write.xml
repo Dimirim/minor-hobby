@@ -92,19 +92,12 @@
             android:layout_marginTop="13dp"
             android:background="@color/colorPrimaryDarkLight" />
 
-        <EditText
+        <jp.wasabeef.richeditor.RichEditor
+            android:id="@+id/richEditor"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/white"
-            android:hint="내용을 입력하세요"
-            android:padding="16dp"
-            android:inputType="textMultiLine"
-            android:scrollbars="vertical"
-            android:gravity="top"
-            android:text="@={vm.content}"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDarkLight" />
+            android:background="@android:color/white" />
 
         <View
             android:layout_width="match_parent"
@@ -138,6 +131,30 @@
 
             <ImageButton
                 android:id="@+id/italicBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_format_italic_24px" />
+
+            <ImageButton
+                android:id="@+id/h1Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_format_italic_24px" />
+
+            <ImageButton
+                android:id="@+id/h2Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_format_italic_24px" />
+
+            <ImageButton
+                android:id="@+id/h3Btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

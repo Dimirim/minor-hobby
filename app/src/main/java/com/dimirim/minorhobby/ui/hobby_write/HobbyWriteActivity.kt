@@ -3,6 +3,7 @@ package com.dimirim.minorhobby.ui.hobby_write
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -37,5 +38,11 @@ class HobbyWriteActivity : AppCompatActivity() {
         backBtn.setOnClickListener {
             finish()
         }
+
+        richEditor.apply {
+            setPlaceholder("내용을 입력하세요...")
+            setPadding(16, 16, 16, 16)
+        }
+
     }
 }
