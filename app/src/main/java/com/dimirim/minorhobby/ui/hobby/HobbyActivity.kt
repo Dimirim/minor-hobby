@@ -2,6 +2,8 @@ package com.dimirim.minorhobby.ui.hobby
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -9,11 +11,16 @@ import androidx.lifecycle.lifecycleScope
 import com.dimirim.minorhobby.R
 import com.dimirim.minorhobby.databinding.ActivityHobbyBinding
 import com.dimirim.minorhobby.databinding.ItemPostLargeBinding
+import com.dimirim.minorhobby.databinding.ItemToggleTagBinding
+import com.dimirim.minorhobby.models.ToggleTag
 import com.dimirim.minorhobby.ui.adapters.PostRecyclerAdapter
 import com.dimirim.minorhobby.ui.hobby_write.HobbyWriteActivity
 import com.dimirim.minorhobby.ui.post.PostActivity
+import com.google.android.flexbox.FlexboxLayoutManager
 import kotlinx.android.synthetic.main.activity_hobby.*
+import kotlinx.android.synthetic.main.layout_tag_search.view.*
 import kotlinx.coroutines.launch
+import slush.Slush
 
 class HobbyActivity : AppCompatActivity() {
     private lateinit var viewModel: HobbyViewModel
@@ -69,9 +76,45 @@ class HobbyActivity : AppCompatActivity() {
             }
         }
 
+        filter.setOnClickListener {
+            showTagSearchDialog()
+        }
+
         backBtn.setOnClickListener {
             finish()
         }
+    }
+
+    private fun showTagSearchDialog() {
+        val view = LayoutInflater.from(this).inflate(R.layout.layout_tag_search, hobbyRoot, false)
+
+        AlertDialog.Builder(this)
+            .setView(view)
+            .setNegativeButton(R.string.cancel) { _, _ -> }
+            .setPositiveButton(R.string.apply) { _, _ ->
+                lifecycleScope.launch {
+                    viewModel.loadPostByTags(
+                        hobbyId,
+                        viewModel.filterTags.filter { it.isEnabled.value!! }.map { it.tag.id },
+                        view.containsAllSwitch.isEnabled
+                    )
+                }
+            }
+            .show()
+
+        Slush.SingleType<ToggleTag>()
+            .setItems(viewModel.filterTags)
+            .setItemLayout(R.layout.item_toggle_tag)
+            .setLayoutManager(FlexboxLayoutManager(this))
+            .onBindData<ItemToggleTagBinding> { binding, toggleTag ->
+                binding.lifecycleOwner = this
+                binding.item = toggleTag
+            }
+            .onItemClick { view, i ->
+                val isEnabled = viewModel.filterTags[i].isEnabled
+                isEnabled.value = !isEnabled.value!!
+            }
+            .into(view.tagRecyclerView)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
